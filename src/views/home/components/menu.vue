@@ -1,0 +1,132 @@
+<template>
+	<div class="menuContainer noCopy" :class="{'collapse':collapse}">
+		<div class="logoBox" @click="$router.push('/')">
+			<img src="@/assets/home/logo.png"/>
+			<div>高楼大厦</div>
+		</div>
+		<el-menu :collapse="collapse" :default-active="activePath" unique-opened router>
+			<template v-for="item in menuList" >
+				<el-submenu v-if="item.children" :index="item.path" :key="item.path">
+					<template slot="title">
+						<i :class="item.meta.icon"/>
+						<span slot="title">{{item.meta.title}}</span>
+					</template>
+					<template v-for="item2 in item.children">
+						<el-menu-item :index="item2.path" :key="item2.path">
+							<span slot="title">{{item2.meta.title}}</span>
+						</el-menu-item>
+					</template>
+				</el-submenu>
+				<el-menu-item v-else :index="item.path" :key="item.path">
+					<i :class="item.meta.icon"/>
+					<span slot="title">{{item.meta.title}}</span>
+				</el-menu-item>
+			</template>
+		</el-menu>
+	</div>
+</template>
+
+<script>
+	import { mapState } from 'vuex'
+	export default {
+		data() {
+			return {
+				menuList:[],
+				activePath:'',
+			}
+		},
+		watch: {
+			$route() {
+				this.setPath()
+			}
+		},
+		computed: {
+			...mapState({
+				collapse: state => state.collapse,
+			})
+		},
+		methods: {
+			setPath(){
+				this.activePath=this.$route.path
+			},
+			solveMenu(){
+				let arr=this.$router.options.routes
+				for(let i=arr.length-1;i>=0;i--){
+					if(arr[i].children){
+						for(let j in arr[i].children){
+							arr[i].children[j].path=arr[i].path+'/'+arr[i].children[j].path
+						}
+						if(arr[i].children.length==1){
+							arr[i].component=arr[i].children[0].component
+							arr[i].path=arr[i].children[0].path
+							arr[i].name=arr[i].children[0].name
+							delete arr[i].children
+						}
+					}else{
+						arr.splice(i,1)
+					}
+				}
+				this.menuList=arr
+				this.setPath()
+			}
+		},
+		created(){
+			this.solveMenu()
+		}
+	}
+</script>
+
+
+<style lang="scss">
+	.menuContainer {
+		width: 200px;
+		background-color: #ffffff;
+		border-right: solid 1px #e6e6e6;
+		position: fixed;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 10;
+		transition: all 0.3s;
+		overflow: hidden;
+		&.collapse{
+			width: 64px;
+		}
+		.logoBox{
+			padding: 0 18px;
+			display: flex;
+			align-items: center;
+			height: 50px;
+			cursor: pointer;
+			img{
+				height: 29px;
+			}
+			div{
+				font-size: 16px;
+				font-weight: 600;
+				margin-left: 18px;
+				white-space:nowrap;
+			}
+		}
+		.el-menu{
+			border: none;
+			overflow: hidden;
+			width: 100% !important;
+			transition: all 0.1s;
+			.el-submenu{
+				.el-submenu__icon-arrow {
+					margin-top: -5px;
+				}
+				.el-menu-item{
+					padding-left: 50px !important;
+				}
+			}
+			.el-submenu__title,.el-menu-item{
+				i:first-child{
+					margin-top: -3px;
+				}
+			}
+		}
+	}
+</style>
+

@@ -1,0 +1,13 @@
+$--color-primary: #5275FB; //主题色
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+@import "~element-ui/packages/theme-chalk/src/index";
+
+.el-tabs__header,
+.el-select *,
+.el-select-dropdown *{
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-khtml-user-select: none;
+	user-select: none;
+}
