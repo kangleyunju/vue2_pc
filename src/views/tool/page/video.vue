@@ -1,5 +1,5 @@
 <template>
-	<div class="homeContainer">
+	<div class="homeContainer" v-loading="loading">
 		<div class="floor">
 			<h2 class="title">短视频</h2>
 			<div class="box">
@@ -24,7 +24,8 @@
 		},
 		data() {
 			return {
-				list: []
+				list: [],
+				loading:false
 			}
 		},
 		methods: {
@@ -32,6 +33,7 @@
 				this.$router.push('/tool/player?url='+url)
 			},
 			getList() {
+				this.loading=true
 				this.list = [{
 						name: '第一个视频的名称',
 						url: 'https://vd2.bdstatic.com/mda-kareu501wkgbwxqz/sc/mda-kareu501wkgbwxqz.mp4'
@@ -51,7 +53,8 @@
 						this.list[i].time = this.parseTime(this.list[i].duration)
 					}
 					this.list = this.list.splice(0)
-				}, 100)
+					this.loading=false
+				}, 300)
 			},
 			changeTime(e,index){
 				let video = document.getElementById('video' + index)

@@ -11,3 +11,9 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 	-khtml-user-select: none;
 	user-select: none;
 }
+
+.el-tabs {
+  .el-tabs__item:focus.is-active.is-focus:not(:active) {
+    box-shadow: none;
+  }
+}

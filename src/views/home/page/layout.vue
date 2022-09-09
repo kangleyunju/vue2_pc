@@ -44,7 +44,7 @@
 			padding-left: 64px;
 		}
 		.viewBox{
-			padding: 50px 16px 0;
+			padding: 66px 16px 16px;
 		}
 	}
 </style>

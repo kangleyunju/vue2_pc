@@ -2,7 +2,7 @@
 	<div class="menuContainer noCopy" :class="{'collapse':collapse}">
 		<div class="logoBox" @click="$router.push('/')">
 			<img src="@/assets/home/logo.png"/>
-			<div>高楼大厦</div>
+			<div>vue2后台</div>
 		</div>
 		<el-menu :collapse="collapse" :default-active="activePath" unique-opened router>
 			<template v-for="item in menuList" >

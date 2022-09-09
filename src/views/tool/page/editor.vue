@@ -47,8 +47,7 @@
 </script>
 <style lang="scss">
 	.editorContainer {
-		padding: 10px 20px;
-
+		background-color: #fff;
 		.el-tab-pane {
 			padding: 0 20px 0 0;
 		}

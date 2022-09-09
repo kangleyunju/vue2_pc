@@ -18,7 +18,7 @@ module.exports = defineConfig({
 		port: 8200,
 		proxy: {
 			'/api': {
-				target: 'https://blog.csdn.net',
+				target: 'https://www.yizhibo.com',
 				changeOrigin: true,
 				pathRewrite: {
 					"^/api": ""

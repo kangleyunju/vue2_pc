@@ -6,13 +6,10 @@ import store from './store'
 //引入ElementUI
 import ElementUI from 'element-ui'
 import '@/style/resetElement.scss'
-Vue.use(ElementUI)
+//引入jsonp,通过this.$jsonp调用方法
+import { VueJsonp } from 'vue-jsonp'
 
-//全局引入播放器
-// import VideoPlayer from 'vue-video-player'
-// require('video.js/dist/video-js.css')
-// require('vue-video-player/src/custom-theme.css')
-// Vue.use(VideoPlayer)
+Vue.use(ElementUI).use(VueJsonp)
 
 Vue.config.productionTip = false
 

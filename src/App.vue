@@ -24,6 +24,7 @@
 		margin: 0;
 		padding: 0;
 		font-size: 14px;
+		background-color: #f8f8f8;
 	}
 	//禁止复制
 	.noCopy {

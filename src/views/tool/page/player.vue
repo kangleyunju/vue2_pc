@@ -1,6 +1,6 @@
 <template>
 	<div class="playerContainer">
-		<h2 class="title">视频播放器</h2>
+		<div class="pageTitle">视频播放器</div>
 		<video-player 
 			ref="videoPlayer" 
 			:playsinline="true" 
@@ -30,7 +30,7 @@
 <script>
 	import 'videojs-contrib-hls' // 直播推流
 	import { videoPlayer } from 'vue-video-player'
-
+	import {getVideoList} from '@/views/tool/api'
 	export default {
 		components: {
 			videoPlayer
@@ -49,7 +49,8 @@
 					name:'m3u8链接2',
 					url:'https://pl.xiaoka.tv/alicdn/4808895501700108.m3u8'
 				}],
-				options: {}
+				options: {},
+				videoList:[]
 			}
 		},
 		methods: {
@@ -58,15 +59,7 @@
 			},
 			init(url,type) {
 				if(type==1){
-					this.url=this.list[0].url
-				}
-				if(url){
-					if(url.indexOf('.mp4')>-1||url.indexOf('.m3u8')>-1){
-						this.url=url
-					}else{
-						this.$message.error('链接不正确!')
-						return
-					}
+					this.url=url?url:this.list[0].url
 				}
 				if(type==1||this.url!=this.options.sources[0].src){
 					this.options = {
@@ -108,6 +101,9 @@
 				}else{
 					return ''
 				}
+			},
+			getVideoList(){
+				
 			},
 			// 播放回调
 			play(e) {
@@ -156,16 +152,21 @@
 		},
 		created() {
 			this.init(this.$route.query.url,1)
+			this.getVideoList()
 		}
 	}
 </script>
 <style lang="scss">
 	@import 'video.js/dist/video-js.css';
 	.playerContainer {
+		.pageTitle{
+			font-size: 18px;
+			font-weight: bold;
+		}
 		.videoBox {
 			width: 100%;
 			min-width: 800px;
-
+			margin-top: 16px;
 			.vjs-big-play-button {
 				background-color: rgba(0, 0, 0, 0.45);
 				height: 50px;
