@@ -13,8 +13,7 @@ module.exports = defineConfig({
 	chainWebpack: () => {}, //调整内部的 webpack 配置
 	transpileDependencies: true,
 	devServer: {
-		open:true,
-		host: 'localhost',
+		open:false,
 		port: 8200,
 		proxy: {
 			'/api': {

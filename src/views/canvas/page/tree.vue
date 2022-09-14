@@ -1,6 +1,6 @@
 <template>
 	<div class="treeContainer" @click="reset">
-		<canvas id="tree" width="840" height="600" />
+		<canvas id="tree" width="840" height="600"/>
 	</div>
 </template>
 <script>
@@ -89,13 +89,14 @@
 		}
 	};
 </script>
-<style lang="scss">
-	.treeContainer {
-		position: relative;
+<style lang="scss" scoped>
+	body{
 		background: #e0efe2;
-		height: 100vh;
-		#tree {
-			background: #e0efe2;
-		}
+	}
+	.treeContainer {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
 	}
 </style>

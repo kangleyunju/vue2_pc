@@ -18,7 +18,15 @@ methodsArray.forEach((method) => {
 
 const routes = [{
 		path: "/",
-		redirect: "/tool/demo"
+		redirect: "/home/index"
+	},
+	{
+		path: '/login',
+		name: 'login',
+		component: () => import('@/views/home/page/login.vue'),
+		meta: {
+			title: '登录'
+		}
 	},
 	{
 		path: "/home",
@@ -70,6 +78,22 @@ const routes = [{
 			component: () => import('@/views/tool/page/demo.vue'),
 			meta: {
 				title: 'demo'
+			}
+		}]
+	},
+	{
+		path: "/canvas",
+		component: layout,
+		meta: {
+			title: '画布',
+			icon: 'el-icon-s-help'
+		},
+		children: [{
+			path: 'tree',
+			name: 'canvasTree',
+			component: () => import('@/views/canvas/page/tree.vue'),
+			meta: {
+				title: '树'
 			}
 		}]
 	}

@@ -40,12 +40,15 @@
 		padding-left: 200px;
 		min-width: 1200px;
 		transition: all 0.3s;
+		height: 100vh;
 		&.collapse{
 			padding-left: 64px;
 		}
 		.viewBox{
 			width: 100%;
 			padding: 66px 16px 16px;
+			height: 100%;
+			box-sizing: border-box;
 		}
 	}
 </style>
