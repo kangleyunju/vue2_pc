@@ -18,7 +18,7 @@ methodsArray.forEach((method) => {
 
 const routes = [{
 		path: "/",
-		redirect: "/home/index"
+		redirect: "/tool/demo"
 	},
 	{
 		path: "/home",
@@ -63,6 +63,13 @@ const routes = [{
 			component: () => import('@/views/tool/page/editor.vue'),
 			meta: {
 				title: '富文本编辑器'
+			}
+		},{
+			path: 'demo',
+			name: 'toolDemo',
+			component: () => import('@/views/tool/page/demo.vue'),
+			meta: {
+				title: 'demo'
 			}
 		}]
 	}

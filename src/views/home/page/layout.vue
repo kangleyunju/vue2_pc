@@ -44,6 +44,7 @@
 			padding-left: 64px;
 		}
 		.viewBox{
+			width: 100%;
 			padding: 66px 16px 16px;
 		}
 	}

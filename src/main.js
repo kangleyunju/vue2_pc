@@ -8,6 +8,8 @@ import ElementUI from 'element-ui'
 import '@/style/resetElement.scss'
 //引入jsonp,通过this.$jsonp调用方法
 import { VueJsonp } from 'vue-jsonp'
+//添加事件管理者’passive’，来阻止’touchstart’事件，让页面更加流畅。 解决chrome下的warning问题
+import "default-passive-events"
 
 Vue.use(ElementUI).use(VueJsonp)
 

@@ -12,8 +12,36 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 	user-select: none;
 }
 
+//去除难看边框
 .el-tabs {
   .el-tabs__item:focus.is-active.is-focus:not(:active) {
     box-shadow: none;
   }
+}
+
+.el-dialog{
+	border-radius: 8px;
+	.el-dialog__header{
+		padding: 19px 24px;
+		border-bottom: 1px solid #E9EBF2;
+		.el-dialog__title{
+			font-size: 18px;
+			font-weight: 600;
+		}
+	}
+	.el-dialog__headerbtn{
+		top:24px;
+	}
+	.el-dialog__body{
+		padding: 0;
+	}
+	.el-dialog__footer{
+		border-top: 1px solid #E9EBF2;
+		padding: 14px 24px;
+	}
+}
+
+//使textarea字体和input一致
+.el-textarea__inner{
+	font-family: "Helvetica Neue";
 }
