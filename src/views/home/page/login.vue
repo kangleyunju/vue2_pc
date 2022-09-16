@@ -1,101 +1,122 @@
 <template>
-	<div class="treeContainer" @click="reset">
-		<canvas id="tree" width="840" height="600" />
+	<div class="verifyContainer">
+		<dragVerify
+			ref="dragVerify"
+			:isPassing.sync="isPassing"
+			text="请按住滑块拖动"
+			successText="验证通过"
+			handlerIcon="el-icon-d-arrow-right"
+			successIcon="el-icon-circle-check"
+			@passcallback="passcallback(1)">
+		</dragVerify>
+		<dragVerifyImg
+			ref="dragVerifyImg"
+			:imgsrc="img"
+			:isPassing.sync="isPassing2"
+			:showRefresh="true"
+			text="请按住滑块拖动"
+			successText="验证通过"
+			handlerIcon="el-icon-d-arrow-right"
+			successIcon="el-icon-circle-check"
+			refreshIcon="el-icon-refresh-right"
+			@refresh="refresh(1)"
+			@passcallback="passcallback(2)">
+		</dragVerifyImg>
+		<dragVerifyChip
+			ref="dragVerifyChip"
+			:imgsrc="img2"
+			:isPassing.sync="isPassing3"
+			:showRefresh="true"
+			:barWidth="40"
+			text="请按住滑块拖动"
+			successText="验证通过"
+			handlerIcon="el-icon-d-arrow-right"
+			successIcon="el-icon-circle-check"
+			refreshIcon="el-icon-refresh-right"
+			@refresh="refresh(2)"
+			@passcallback="passcallback(3)">
+		</dragVerifyChip>
+		<dragVerifyRotate
+			ref="dragVerifyRotate"
+			:imgsrc="img3"
+			:isPassing.sync="isPassing4"
+			:showTips="true"
+			text="请按住滑块拖动"
+			successText="验证通过"
+			handlerIcon="el-icon-d-arrow-right"
+			successIcon="el-icon-circle-check"
+			refreshIcon="el-icon-refresh-right"
+			@refresh="refresh(3)"
+			@passcallback="passcallback(4)">
+		</dragVerifyRotate>
 	</div>
 </template>
 <script>
+	// 基本滑块验证组件
+	import dragVerify from "@/components/dragVerify";
+	// 图片滑块组件
+	import dragVerifyImg from "@/components/dragVerifyImg";
+	// 拼图滑块组件
+	import dragVerifyChip from "@/components/dragVerifyImgChip";
+	// 旋转图片滑块组件
+	import dragVerifyRotate from "@/components/dragVerifyImgRotate";
 	export default {
+		components: {
+			dragVerify,
+			dragVerifyImg,
+			dragVerifyChip,
+			dragVerifyRotate
+		},
 		data() {
 			return {
-				ctx: null,
-				leafArr: [],//叶子的数组
-				canvas:null
+				img: '',
+				img2: '',
+				img3:'',
+				imgList: [
+					require('@/assets/home/face.png'),
+					require('@/assets/home/face2.png')
+				],
+				isPassing:false,
+				isPassing2:false,
+				isPassing3:false,
+				isPassing4:false
 			}
-		},
-		mounted() {
-			this.canvas=document.getElementById("tree")
-			this.ctx = this.canvas.getContext("2d")
-			this.reset()
 		},
 		methods: {
-			reset(){
-				this.leafArr=[]
-				this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-				this.drawTree(400, 600, 80, -Math.PI / 2, 8, 12);
-				this.drawAllLeaves();
-			},
-			getRandomInt(n, m) {
-				return Math.floor(Math.random() * (m - n + 1)) + n;
-			},
-			drawAllLeaves() {
-				this.leafArr.forEach(item => {
-					this.drawLeaf(item[0], item[1], this.getRandomInt(15, 25));
-				})
-			},
-			drawLeaf(x, y, num) {
-				let _this = this;
-				for (let i = 0; i < num; i++) {
-					x += (Math.random() - 0.5) * _this.getRandomInt(0, 25);
-					y += (Math.random() - 0.5) * _this.getRandomInt(0, 25);
-					_this.ctx.beginPath();
-					let num1 = Math.random();
-					_this.ctx.fillStyle =
-						"rgba(247," +
-						(Math.random() * 190) +
-						",190," +
-						(num1 >= 0.5 ? num1 - 0.2 : num1) +
-						")";
-					_this.ctx.arc(x, y, _this.getRandomInt(2, 5), 0, 2 * Math.PI);
-					_this.ctx.fill();
+			refresh(e) {
+				if(e==1){
+					this.img = this.getImg()
+				}else{
+					this.img2= this.getImg()
 				}
 			},
-			drawTree(startX, startY, length, angle, depth, branchWidth) {
-				let _this = this;
-				var newLength,
-					newAngle,
-					newDepth,
-					endX,
-					endY,
-					maxAngle = (2 * Math.PI) / 5,
-					subBranches;
-				//开始绘制路径
-				_this.ctx.beginPath();
-				_this.ctx.moveTo(startX, startY);
-				endX = startX + Math.cos(angle) * length;
-				endY = startY + Math.sin(angle) * length;
-
-				_this.ctx.lineCap = "round";
-				_this.ctx.lineWidth = branchWidth;
-				_this.ctx.lineTo(endX, endY);
-
-				_this.ctx.strokeStyle = "#442525"; // 树干棕色
-
-				_this.ctx.stroke();
-				if (depth <= 4) {
-					_this.leafArr.push([endX, endY]);
-				}
-				newDepth = depth - 1;
-				if (newDepth <= 0) {
-					return; // 如果绘制到叶子节点后就结束递归
-				}
-				subBranches = _this.getRandomInt(2, 3);
-				branchWidth *= 0.75;
-				for (var i = 0; i < subBranches; i++) {
-					newLength = length * 0.75 + 0.25 * length * Math.random();
-					newAngle = angle + Math.random() * maxAngle - maxAngle * 0.5;
-					_this.drawTree(endX, endY, newLength, newAngle, newDepth, branchWidth);
-				}
+			getImg() {
+				return this.imgList[Math.floor(Math.random(0, 1) * this.imgList.length)]
+			},
+			//验证通过
+			passcallback(e) {
+				this.$message.success('验证通过')
+				setTimeout(() => {
+					if (e == 1) {
+						this.$refs.dragVerify.reset()
+					} else if (e == 2) {
+						this.$refs.dragVerifyImg.reset()
+					} else if(e==3){
+						this.$refs.dragVerifyChip.reset()
+					}else{
+						this.$refs.dragVerifyRotate.reset()
+					}
+					this.$message.closeAll()
+				}, 2000)
 			}
-		}
-	};
-</script>
-<style lang="scss">
-	.treeContainer {
-		position: relative;
-		background: #e0efe2;
-		height: 100vh;
-		#tree {
-			background: #e0efe2;
+		},
+		created() {
+			this.img = this.getImg()
+			this.img2 = this.getImg()
+			this.img3 = this.getImg()
 		}
 	}
+</script>
+<style lang="scss">
+	.verifyContainer {}
 </style>

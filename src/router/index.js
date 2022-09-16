@@ -18,7 +18,7 @@ methodsArray.forEach((method) => {
 
 const routes = [{
 		path: "/",
-		redirect: "/home/index"
+		redirect: "/login"
 	},
 	{
 		path: '/login',

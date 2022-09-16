@@ -69,6 +69,7 @@
 <style lang="scss">
 	.dayContainer{
 		position: relative;
+		background-color: #fff;
 		.el-date-editor{
 			position: absolute;
 			top:10px;

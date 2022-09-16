@@ -1,8 +1,8 @@
 <template>
 	<div class="layoutContainer scrollBar" :class="{'collapse':collapse}">
 		<Menu/>
+		<Header/>
 		<div class="viewBox">
-			<Header/>
 			<router-view/>
 		</div>
 	</div>
@@ -46,8 +46,8 @@
 		}
 		.viewBox{
 			width: 100%;
-			padding: 66px 16px 16px;
 			height: 100%;
+			padding: 50px 0 0;
 			box-sizing: border-box;
 		}
 	}

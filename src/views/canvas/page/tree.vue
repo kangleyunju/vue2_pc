@@ -89,14 +89,12 @@
 		}
 	};
 </script>
-<style lang="scss" scoped>
-	body{
-		background: #e0efe2;
-	}
+<style lang="scss">
 	.treeContainer {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		height: 100%;
+		background: #e0efe2;
 	}
 </style>
