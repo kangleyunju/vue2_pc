@@ -1,6 +1,6 @@
 <template>
 	<div class="verifyContainer">
-		<el-tabs v-model="tabName" type="card" @tab-click="changeTab">
+		<el-tabs v-model="tabName" type="border-card" @tab-click="changeTab">
 			<el-tab-pane label="基础滑块" name="1">
 				<dragVerify
 					ref="dragVerify"
@@ -96,6 +96,16 @@
 		methods: {
 			changeTab(e){
 				this.tabName=e.name
+				if (this.tabName == 1) {
+					this.$refs.dragVerify.reset()
+				} else if (this.tabName == 2) {
+					console.log('9999')
+					this.$refs.dragVerifyImg.reset()
+				} else if(this.tabName==3){
+					this.$refs.dragVerifyChip.reset()
+				}else{
+					this.$refs.dragVerifyRotate.reset()
+				}
 			},
 			refresh(e) {
 				if(e==1){
@@ -124,13 +134,17 @@
 				}, 2000)
 			}
 		},
-		created() {
+		mounted() {
 			this.img = this.getImg()
 			this.img2 = this.getImg()
 			this.img3 = this.getImg()
+			this.$refs.dragVerify?.reset()
 		}
 	}
 </script>
 <style lang="scss">
-	.verifyContainer {}
+	.verifyContainer {
+		margin: 16px;
+		background-color: #fff;
+	}
 </style>

@@ -63,6 +63,9 @@
 				let tmp = festAndTerm.join('')
 				return tmp == '' ? lunarMD : festAndTerm.filter(val => val != '').join('/')
 			}
+		},
+		created() {
+
 		}
 	}
 </script>

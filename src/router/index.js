@@ -18,7 +18,7 @@ methodsArray.forEach((method) => {
 
 const routes = [{
 		path: "/",
-		redirect: "/login"
+		redirect: "/home/index"
 	},
 	{
 		path: '/login',
@@ -78,6 +78,13 @@ const routes = [{
 			component: () => import('@/views/tool/page/demo.vue'),
 			meta: {
 				title: 'demo'
+			}
+		},{
+			path: 'verify',
+			name: 'toolVerify',
+			component: () => import('@/views/tool/page/verify.vue'),
+			meta: {
+				title: '图片验证码'
 			}
 		}]
 	},
