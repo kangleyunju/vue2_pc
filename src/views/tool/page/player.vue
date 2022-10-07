@@ -1,5 +1,5 @@
 <template>
-	<div class="playerContainer">
+	<div class="playerContainer pageMain">
 		<div class="pageTitle">视频播放器</div>
 		<video-player 
 			ref="videoPlayer" 
@@ -159,14 +159,9 @@
 <style lang="scss">
 	@import 'video.js/dist/video-js.css';
 	.playerContainer {
-		.pageTitle{
-			font-size: 18px;
-			font-weight: bold;
-		}
 		.videoBox {
 			width: 100%;
 			min-width: 800px;
-			margin-top: 16px;
 			.vjs-big-play-button {
 				background-color: rgba(0, 0, 0, 0.45);
 				height: 50px;

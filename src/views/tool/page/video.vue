@@ -1,7 +1,7 @@
 <template>
-	<div class="homeContainer" v-loading="loading">
+	<div class="videoContainer pageMain" v-loading="loading">
 		<div class="floor">
-			<h2 class="title">短视频</h2>
+			<div class="pageTitle">短视频</div>
 			<div class="box">
 				<div class="item" v-for="(item,index) in list" :key="index" @mouseenter="mouseenter(index)" @mouseleave="mouseleave(index)">
 					<video :src="item.url" :id="'video'+index" muted @click="jump(item.url)"/>
@@ -10,7 +10,7 @@
 					</div>
 					<el-slider v-model="item.now" :show-tooltip="false" @change="changeTime($event,index)" :max="item.duration"/>
 					<div class="info">
-						<div class="name zd_word1">{{item.name}}</div>
+						<div class="name xzw_word1">{{item.name}}</div>
 					</div>
 				</div>
 			</div>
@@ -114,7 +114,7 @@
 	}
 </script>
 <style lang="scss">
-	.homeContainer {
+	.videoContainer {
 		.floor {
 			.box {
 				display: flex;

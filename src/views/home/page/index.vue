@@ -1,6 +1,6 @@
 <template>
-	<div class="dayContainer">
-		<el-date-picker v-model="monthValue" placeholder="请选择月份" type="month" align="left" @change="changeMonth" :clearable="false" :editable="false"/>
+	<div class="dayContainer pageMain">
+		<el-date-picker v-model="monthValue" placeholder="请选择月份" type="date" align="left" @change="changeMonth" :clearable="false" :editable="false"/>
 		<el-calendar v-model="value" :first-day-of-week="7">
 			<template slot="dateCell" slot-scope="{date, data}">
 				<div class="cell" :class="{ selected : isSelected(date, data) }">
@@ -72,12 +72,11 @@
 <style lang="scss">
 	.dayContainer{
 		position: relative;
-		background-color: #fff;
 		.el-date-editor{
 			position: absolute;
-			top:10px;
+			top:26px;
 			left: 20px;
-			width: 105px;
+			width: 125px;
 			z-index: 1;
 			.el-input__inner{
 				height: 30px;

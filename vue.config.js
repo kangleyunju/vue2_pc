@@ -1,4 +1,8 @@
 const { defineConfig } = require('@vue/cli-service')
+
+function resolve(dir) {
+	return require('path').join(__dirname, dir)
+}
 module.exports = defineConfig({
 	publicPath: '/', // 基本路径
 	outputDir: 'dist', // 构建时的输出目录
@@ -10,10 +14,15 @@ module.exports = defineConfig({
 	transpileDependencies: [], // babel-loader 默认会跳过 node_modules 依赖。
 	productionSourceMap: false, // 是否为生产环境构建生成 source map
 	configureWebpack: () => {}, //调整内部的 webpack 配置
-	chainWebpack: () => {}, //调整内部的 webpack 配置
+	chainWebpack(config) {
+		config.module.rules.delete('svg'); //删除默认配置中处理svg
+		config.module.rule('svg-sprite-loader').test(/\.svg$/).include.add(resolve('src/assets/svg')).end().use('svg-sprite-loader').loader('svg-sprite-loader').options({
+			symbolId: 'icon-[name]'
+		})
+	}, //调整内部的 webpack 配置
 	transpileDependencies: true,
 	devServer: {
-		open:false,
+		open: false,
 		port: 8200,
 		proxy: {
 			'/api': {

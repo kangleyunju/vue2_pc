@@ -8,7 +8,7 @@ pc
 vue2，elementui
 
 ### 邮箱
-249042680@qq.com
+有问题可以提Issue，或者发邮件：249042680@qq.com，觉得不错可以点个赞
 
 ### 仓库
 [gitee](https://gitee.com/kangleyunju/vue2_pc)
@@ -32,7 +32,7 @@ npm run build
 ```
 
 ### 依赖说明
-* vue-video-player默认是vue3版本，vue2使用
+* vue-video-player默认是vue3版本，vue2需要以下版本
 ```
 npm i vue-video-player@5.0.2
 ```
@@ -52,3 +52,6 @@ npm i @wangeditor/editor @wangeditor/editor-for-vue
 ```
 npm i vue-ueditor-wrap
 ```
+
+### 网址
+https://static-2503170c-6f74-4217-ac1a-43133fb6d1b4.bspapp.com/vue2_pc

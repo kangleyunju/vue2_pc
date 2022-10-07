@@ -10,21 +10,35 @@
 
 			}
 		},
-		methods: {
-
+		watch:{
+			$route(n){
+				this.setPageTitle(n.meta.title)
+			}
 		},
-		created() {
-
+		methods: {
+			setPageTitle(name){
+				document.title=name||this.baseName
+			}
+		},
+		mounted() {
+			this.setPageTitle()
 		}
 	}
 </script>
 <style lang="scss">
+	:root{
+		--color-primary: #5275FB;
+		--color-danger: #F56C6C;
+	}
 	body {
 		color: #333333;
 		margin: 0;
 		padding: 0;
 		font-size: 14px;
-		background-color: #f8f8f8;
+		background-color: #eee;
+	}
+	h1,h2,h3,h4,h5,h5,ul,li{
+		margin: 0;
 	}
 	//禁止复制
 	.noCopy {
@@ -35,19 +49,39 @@
 		user-select: none;
 	}
 	
-	.zd_word1 {
+	.xzw_word1 {
 		overflow: hidden;
 		display: -webkit-box;
 		-webkit-line-clamp: 1;
 		-webkit-box-orient: vertical;
 	}
 	
-	.zd_word2 {
+	.xzw_word2 {
 		overflow: hidden;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 	}
+	.pageMain{
+		padding: 16px;
+		margin: 16px;
+		background-color: #fff;
+		border-radius: 4px;
+		.pageTitle{
+			font-size: 18px;
+			font-weight: bold;
+			margin-bottom: 16px;
+		}
+		.searchBox{
+		}
+		.el-table{
+			margin: 16px 0;
+			.el-button.delText:hover{
+				color: #ff3e18;
+			}
+		}
+	}
+
 	//滚动条样式
 	::-webkit-scrollbar {
 		height: 8px;

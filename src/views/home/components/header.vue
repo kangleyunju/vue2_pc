@@ -1,7 +1,7 @@
 <template>
   <div class="headerContainer" :class="{'collapse':collapse}">
 	<div class="left">
-		<el-button type="primary" size="mini" :icon="collapse?'el-icon-caret-right':'el-icon-caret-left'" @click="changeCollapse">{{collapse?'展开':'折叠'}}</el-button>
+		<el-button :type="collapse?'':'primary'" size="mini" :icon="collapse?'el-icon-caret-right':'el-icon-caret-left'" @click="changeCollapse">{{collapse?'展开':'折叠'}}</el-button>
 	</div>
 	<div class="right">
 		<el-button icon="el-icon-full-screen" type="success" size="mini" @click="full"></el-button>

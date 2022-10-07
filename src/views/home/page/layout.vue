@@ -39,6 +39,7 @@
 		display: flex;
 		padding-left: 200px;
 		min-width: 1000px;
+		min-height: 500px;
 		transition: all 0.3s;
 		height: 100vh;
 		&.collapse{
