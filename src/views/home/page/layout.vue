@@ -1,5 +1,5 @@
 <template>
-	<div class="layoutContainer scrollBar" :class="{'collapse':collapse}">
+	<div class="layoutContainer" :class="{'collapse':collapse}">
 		<Menu/>
 		<Header/>
 		<div class="viewBox">
@@ -42,6 +42,7 @@
 		min-height: 500px;
 		transition: all 0.3s;
 		height: 100vh;
+		overflow-x: hidden;
 		&.collapse{
 			padding-left: 64px;
 		}

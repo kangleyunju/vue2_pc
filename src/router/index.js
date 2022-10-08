@@ -46,6 +46,13 @@ const routes = [{
 		meta: {
 			title: '树'
 		}
+	},{
+		path: 'galaxy',
+		name: 'canvasGalaxy',
+		component: () => import('@/views/canvas/page/galaxy.vue'),
+		meta: {
+			title: '银河'
+		}
 	}]
 }, {
 	path: "/diy",

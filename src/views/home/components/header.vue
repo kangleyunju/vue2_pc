@@ -47,6 +47,7 @@
 		top:0;
 		right: 0;
 		left: 200px;
+		z-index: 100;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
