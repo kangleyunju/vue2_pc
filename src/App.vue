@@ -30,6 +30,9 @@
 		--color-primary: #5275FB;
 		--color-danger: #F56C6C;
 	}
+	#app{
+		overflow: hidden;
+	}
 	body {
 		color: #333333;
 		margin: 0;
@@ -67,6 +70,8 @@
 		margin: 16px;
 		background-color: #fff;
 		border-radius: 4px;
+		min-height: calc(100vh - 92px);
+		box-sizing: border-box;
 		.pageTitle{
 			font-size: 18px;
 			font-weight: bold;

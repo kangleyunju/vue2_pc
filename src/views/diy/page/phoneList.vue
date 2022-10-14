@@ -4,12 +4,12 @@
 			<el-button type="primary" size="medium" @click="addItem">新建</el-button>
 		</div>
 		<el-table :data="list" border>
-			<el-table-column prop="id" label="ID" align="center" min-width="80"></el-table-column>
-			<el-table-column prop="name" label="名称" align="center" min-width="100"></el-table-column>
-			<el-table-column prop="title" label="页面标题" align="center" min-width="100"></el-table-column>
-			<el-table-column prop="path" label="页面路径" align="center" min-width="100"></el-table-column>
-			<el-table-column prop="createTime" label="创建时间" min-width="140" align="center"/>
-			<el-table-column prop="editTime" label="编辑时间" min-width="140" align="center"/>
+			<el-table-column prop="id" label="ID" align="center" min-width="80"/>
+			<el-table-column prop="name" label="名称" align="center" min-width="100" show-overflow-tooltip/>
+			<el-table-column prop="title" label="页面标题" align="center" min-width="100" show-overflow-tooltip/>
+			<el-table-column prop="path" label="页面路径" align="center" min-width="120" show-overflow-tooltip/>
+			<el-table-column prop="createTime" label="创建时间" min-width="160" align="center"/>
+			<el-table-column prop="editTime" label="编辑时间" min-width="160" align="center"/>
 			<el-table-column prop="person" label="操作人员" min-width="100" align="center"/>
 			<el-table-column fixed="right" label="操作" min-width="100" align="center">
 				<template slot-scope="scope">

@@ -79,6 +79,7 @@
 		width: 200px;
 		background-color: #ffffff;
 		border-right: solid 1px #e6e6e6;
+		box-shadow: 4px 0px 15px rgb(0 0 0 / 8%);
 		position: fixed;
 		left: 0;
 		top: 0;
@@ -110,7 +111,15 @@
 			overflow: hidden;
 			width: 100% !important;
 			transition: all 0.1s;
+			>.el-menu-item{
+				display: flex;
+				align-items: center;
+			}
 			.el-submenu {
+				.el-submenu__title{
+					display: flex;
+					align-items: center;
+				}
 				.el-submenu__icon-arrow {
 					margin-top: -5px;
 				}
@@ -120,7 +129,7 @@
 			}
 			.el-submenu__title, .el-menu-item {
 				i:first-child {
-					margin-top: -3px;
+					// margin-top: 1px;
 				}
 			}
 		}

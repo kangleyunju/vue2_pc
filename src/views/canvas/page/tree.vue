@@ -1,5 +1,6 @@
 <template>
-	<div class="treeContainer" @click="reset">
+	<div class="treeContainer noCopy" @click="reset">
+		<div>点击屏幕重新生成树</div>
 		<canvas id="tree" width="840" height="600"/>
 	</div>
 </template>
@@ -96,5 +97,15 @@
 		justify-content: center;
 		height: 100%;
 		background: #e0efe2;
+		overflow: hidden;
+		position: relative;
+		div{
+			position: absolute;
+			top:30px;
+			font-size: 20px;
+			left: 50%;
+			transform: translateX(-50%);
+			cursor: default;
+		}
 	}
 </style>

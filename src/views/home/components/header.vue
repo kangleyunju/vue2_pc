@@ -54,6 +54,7 @@
 		padding: 0 20px;
 		box-sizing: border-box;
 		border-bottom: solid 1px #e6e6e6;
+		box-shadow: 0 4px 15px rgb(0 0 0 / 8%);
 		transition: all 0.3s;
 		&.collapse{
 			left: 64px;

@@ -37,7 +37,7 @@ const routes = [{
 	component: layout,
 	meta: {
 		title: '画布',
-		icon: 'el-icon-s-help'
+		icon: 'el-icon-c-scale-to-original'
 	},
 	children: [{
 		path: 'tree',
@@ -59,7 +59,7 @@ const routes = [{
 	component: layout,
 	meta: {
 		title: '装修',
-		icon: 'el-icon-s-help'
+		icon: 'el-icon-s-open'
 	},
 	children: [{
 		path: 'phoneList',
@@ -81,7 +81,7 @@ const routes = [{
 	component: layout,
 	meta: {
 		title: '工具',
-		icon: 'el-icon-s-help'
+		icon: 'el-icon-tool'
 	},
 	children: [{
 		path: 'video',
