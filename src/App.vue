@@ -1,5 +1,5 @@
 <template>
-	<div id="app">
+	<div id="app" :class="{'dark':isNight}">
 		<router-view />
 	</div>
 </template>
@@ -21,24 +21,38 @@
 			}
 		},
 		mounted() {
+			console.log('当前环境：'+process.env.NODE_ENV)
 			this.setPageTitle()
+			if(localStorage.getItem('isCollapse')==1){
+				this.$store.commit('edit',{name:'isCollapse',val:true})
+			}
+			if(localStorage.getItem('isNight')==1){
+				this.$store.commit('edit',{name:'isNight',val:true})
+			}
 		}
 	}
 </script>
 <style lang="scss">
-	:root{
-		--color-primary: #5275FB;
-		--color-danger: #F56C6C;
-	}
 	#app{
+		--color-primary: #5275FB;
+		--color-primary-light: #7ca4fb;
+		--color-danger: #F56C6C;
+		--bgColor:#fff;
+		--textColor:#333;
+		--borderColor:#e6e6e6;
+		// color: var(--textColor);
+		// background-color: var(--bgColor);
 		overflow: hidden;
+		&.dark{
+			--bgColor:#141414;
+			--textColor:#fff;
+			--borderColor:#141414;
+		}
 	}
 	body {
-		color: #333333;
 		margin: 0;
 		padding: 0;
 		font-size: 14px;
-		background-color: #eee;
 	}
 	h1,h2,h3,h4,h5,h5,ul,li{
 		margin: 0;
@@ -65,12 +79,17 @@
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 	}
+	.xzw_center{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 	.pageMain{
 		padding: 16px;
 		margin: 16px;
 		background-color: #fff;
 		border-radius: 4px;
-		min-height: calc(100vh - 92px);
+		min-height: calc(100vh - 82px);
 		box-sizing: border-box;
 		.pageTitle{
 			font-size: 18px;

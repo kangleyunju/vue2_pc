@@ -1,6 +1,6 @@
 ### 简介
 * vue2.7电脑端后台，启动更快，兼容部分vue3语法
-* wangeditor等多种富文本编辑器
+* wangeditor,ueditor等多种富文本编辑器
 * 视频播放器
 * 自定义element-icon
 * svg组件

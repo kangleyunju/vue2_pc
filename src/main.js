@@ -13,7 +13,9 @@ import { VueJsonp } from 'vue-jsonp'
 import "default-passive-events"
 //引入公共方法
 import global from './base/global'
-Vue.mixin(global)
+//引入请求
+import request from './base/global'
+Vue.mixin(global).mixin(request)
 
 Vue.use(ElementUI).use(VueJsonp)
 

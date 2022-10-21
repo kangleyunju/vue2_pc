@@ -65,7 +65,11 @@
 			}
 		},
 		created() {
-
+			this.request({
+				
+			}).then(res=>{
+				console.log(res)
+			})
 		}
 	}
 </script>

@@ -1,5 +1,5 @@
 <template>
-	<div class="layoutContainer" :class="{'collapse':collapse}">
+	<div class="layoutContainer" :class="{'collapse':isCollapse}">
 		<Menu/>
 		<Header/>
 		<div class="viewBox">
@@ -10,7 +10,6 @@
 <script>
 	import Menu from '@/views/home/components/menu'
 	import Header from '@/views/home/components/header'
-	import { mapState } from 'vuex'
 	export default {
 		components: {
 			Menu,
@@ -20,11 +19,6 @@
 			return {
 
 			}
-		},
-		computed: {
-			...mapState({
-				collapse: state => state.collapse,
-			})
 		},
 		methods: {
 

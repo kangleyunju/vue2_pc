@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		collapse:false
+		isCollapse:false,//是否折叠菜单
+		isNight:false//是否夜间模式
 	},
 	getters: {},
 	mutations: {

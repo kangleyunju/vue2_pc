@@ -1,10 +1,10 @@
 <template>
-	<div class="menuContainer noCopy" :class="{'collapse':collapse}">
+	<div class="menuContainer noCopy" :class="{'collapse':isCollapse}">
 		<div class="logoBox" @click="$router.push('/')">
 			<img src="@/assets/home/logo.png" />
 			<div>vue2后台</div>
 		</div>
-		<el-menu :collapse="collapse" :default-active="activePath" unique-opened router>
+		<el-menu :collapse="isCollapse" :default-active="activePath" unique-opened router>
 			<template v-for="item in menuList">
 				<el-submenu v-if="item.children" :index="item.path" :key="item.path">
 					<template slot="title">
@@ -26,23 +26,17 @@
 	</div>
 </template>
 <script>
-	import { mapState } from 'vuex'
 	export default {
 		data() {
 			return {
 				menuList: [],
-				activePath: '',
+				activePath: ''
 			}
 		},
 		watch: {
 			$route() {
 				this.setPath()
 			}
-		},
-		computed: {
-			...mapState({
-				collapse: state => state.collapse,
-			})
 		},
 		methods: {
 			setPath() {
@@ -69,7 +63,7 @@
 				this.setPath()
 			}
 		},
-		created() {
+		mounted() {
 			this.solveMenu()
 		}
 	}
@@ -77,8 +71,7 @@
 <style lang="scss">
 	.menuContainer {
 		width: 200px;
-		background-color: #ffffff;
-		border-right: solid 1px #e6e6e6;
+		border-right: solid 1px var(--borderColor);
 		box-shadow: 4px 0px 15px rgb(0 0 0 / 8%);
 		position: fixed;
 		left: 0;
@@ -87,6 +80,8 @@
 		z-index: 10;
 		transition: all 0.3s;
 		overflow: hidden;
+		color: var(--textColor);
+		background-color: var(--bgColor);
 		&.collapse {
 			width: 64px;
 		}
@@ -111,6 +106,8 @@
 			overflow: hidden;
 			width: 100% !important;
 			transition: all 0.1s;
+			
+			background-color: transparent;
 			>.el-menu-item{
 				display: flex;
 				align-items: center;
@@ -127,10 +124,18 @@
 					padding-left: 50px !important;
 				}
 			}
-			.el-submenu__title, .el-menu-item {
-				i:first-child {
-					// margin-top: 1px;
-				}
+
+		}
+	}
+	.dark{
+		.el-submenu__title, .el-menu-item {
+			color: var(--textColor);
+			&:hover{
+				background-color: #333;
+			}
+			&.is-active{
+				background-color: #666;
+				color: var(--textColor);
 			}
 		}
 	}

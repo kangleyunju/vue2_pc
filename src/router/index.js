@@ -46,7 +46,7 @@ const routes = [{
 		meta: {
 			title: '树'
 		}
-	},{
+	}, {
 		path: 'galaxy',
 		name: 'canvasGalaxy',
 		component: () => import('@/views/canvas/page/galaxy.vue'),
@@ -84,6 +84,13 @@ const routes = [{
 		icon: 'el-icon-tool'
 	},
 	children: [{
+		path: 'gif',
+		name: 'toolGif',
+		component: () => import('@/views/tool/page/gif.vue'),
+		meta: {
+			title: '动图'
+		}
+	}, {
 		path: 'video',
 		name: 'toolVideo',
 		component: () => import('@/views/tool/page/video.vue'),
@@ -104,7 +111,7 @@ const routes = [{
 		meta: {
 			title: '图片验证码'
 		}
-	},{
+	}, {
 		path: 'editor',
 		name: 'toolEditor',
 		component: () => import('@/views/tool/page/editor.vue'),
@@ -120,6 +127,13 @@ const routes = [{
 		title: '登录'
 	}
 }, {
+	path: '/demo',
+	name: 'demo',
+	component: () => import('@/views/home/page/demo.vue'),
+	meta: {
+		title: '今天吃什么'
+	}
+}, {
 	path: '/diy/phone',
 	name: 'diyPhone',
 	component: () => import('@/views/diy/page/phone.vue'),
@@ -133,10 +147,16 @@ const routes = [{
 	meta: {
 		title: '电脑端装修'
 	}
+}, {
+	path: "/:catchAll(.*)",
+	name: '404',
+	component: () => import('@/views/home/page/404.vue'),
+	meta: {
+		title: '找不到页面'
+	}
 }]
 const router = new VueRouter({
-	mode: 'history',
-	base: process.env.BASE_URL,
+	mode: 'hash',
 	routes
 })
 export default router
