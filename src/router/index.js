@@ -77,6 +77,21 @@ const routes = [{
 		}
 	}]
 }, {
+	path: "/system",
+	component: layout,
+	meta: {
+		title: '系统',
+		icon: 'el-icon-s-home'
+	},
+	children: [{
+		path: 'set',
+		name: 'systemSet',
+		component: () => import('@/views/system/page/set.vue'),
+		meta: {
+			title: '设置'
+		}
+	}]
+}, {
 	path: "/tool",
 	component: layout,
 	meta: {
@@ -117,6 +132,21 @@ const routes = [{
 		component: () => import('@/views/tool/page/editor.vue'),
 		meta: {
 			title: '富文本编辑器'
+		}
+	}]
+}, {
+	path: "/user",
+	component: layout,
+	meta: {
+		title: '用户',
+		icon: 'el-icon-s-home'
+	},
+	children: [{
+		path: 'info',
+		name: 'userInfo',
+		component: () => import('@/views/user/page/info.vue'),
+		meta: {
+			title: '个人中心'
 		}
 	}]
 }, {

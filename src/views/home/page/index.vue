@@ -1,6 +1,6 @@
 <template>
 	<div class="dayContainer pageMain">
-		<el-date-picker v-model="monthValue" placeholder="请选择月份" type="date" align="left" @change="changeMonth" :clearable="false" :editable="false"/>
+		<el-date-picker v-model="monthValue" placeholder="请选择月份" type="date" align="left" @change="changeMonth" :clearable="false" :editable="false" />
 		<el-calendar v-model="value" :first-day-of-week="7">
 			<template slot="dateCell" slot-scope="{date, data}">
 				<div class="cell" :class="{ selected : isSelected(date, data) }">
@@ -17,21 +17,21 @@
 	export default {
 		data() {
 			return {
-				value: new Date(),//当前日期
+				value: new Date(), //当前日期
 				selectedDates: [], //选中的日期
-				monthValue: new Date()//当前月份
+				monthValue: new Date() //当前月份
 			}
 		},
-		watch:{
-			value:{
-				handler(e){
-					this.monthValue=e
+		watch: {
+			value: {
+				handler(e) {
+					this.monthValue = e
 				}
 			}
 		},
 		methods: {
 			changeMonth(e) {
-				this.value=new Date(e)
+				this.value = new Date(e)
 			},
 			// 是否选中日期
 			isSelected: function(slotDate, slotData) {
@@ -65,34 +65,43 @@
 			}
 		},
 		created() {
+			// console.log(this.request())
+			// return
+			// this.$jsonp('https://dog.ceo/api/breeds/image/random')
 			this.request({
-				
-			}).then(res=>{
+				baseURL:'https://dog.ceo',
+				url: 'api/breeds/image/random' ,
+				params:{
+					name:1,
+				}
+			}).then(res => {
 				console.log(res)
+			}).catch(err => {
+				console.log(err)
 			})
 		}
 	}
 </script>
 <style lang="scss">
-	.dayContainer{
+	.dayContainer {
 		position: relative;
-		.el-date-editor{
+		.el-date-editor {
 			position: absolute;
-			top:26px;
+			top: 26px;
 			left: 20px;
 			width: 125px;
 			z-index: 1;
-			.el-input__inner{
+			.el-input__inner {
 				height: 30px;
 				padding-right: 15px;
 				cursor: pointer;
 			}
-			.el-input__icon{
+			.el-input__icon {
 				line-height: 30px;
 			}
 		}
 		.el-calendar {
-			.el-calendar__title{
+			.el-calendar__title {
 				opacity: 0;
 			}
 			.cell {
@@ -102,17 +111,17 @@
 					margin: 8px 0 8px;
 				}
 			}
-			.current{
+			.current {
 				.lunar {
 					&.festival {
 						color: #ff5500;
 					}
 				}
 			}
-			.el-calendar-table td.is-selected{
+			.el-calendar-table td.is-selected {
 				background-color: #E8F3FF;
 			}
-			.el-calendar__body{
+			.el-calendar__body {
 				padding-bottom: 20px;
 			}
 		}

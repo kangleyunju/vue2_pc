@@ -2,6 +2,8 @@ import { mapState } from 'vuex'
 import elPage from "@/components/elPage"
 import sortable from 'vuedraggable' //拖拽
 import svgIcon from '@/components/svgIcon.vue'
+import axios from 'axios'
+import VueCookies from 'vue-cookies'
 const requireAll = requireContext => requireContext.keys().map(requireContext)
 const req = require.context('@/assets/svg', false, /\.svg$/)
 requireAll(req); // 加载目录下的所有 svg 文件
@@ -21,10 +23,16 @@ export default {
 	computed: {
 		...mapState({
 			isCollapse: state => state.isCollapse,
-			isNight: state => state.isNight
+			isNight: state => state.isNight,
+			userInfo:state => state.userInfo
 		})
 	},
 	methods: {
+		checkLogin(){
+			if(VueCookies.get('userInfo')){
+				this.$store.commit('edit',{name:'userInfo',val:VueCookies.get('userInfo')})
+			}
+		},
 		//二次确认封装
 		handleDelete(content = '确定删除吗？', title = '提示', confirmText = '确定', cancelText = '取消') {
 			return new Promise((resolve, reject) => {
@@ -176,6 +184,49 @@ export default {
 					return
 		 	}
 				reject(new Error('not support'))
+			})
+		},
+		//生成随机token,max位数
+		createToken(max=10){
+			let token = ''
+			for (let i = 1; i <= max; i++) {
+			  const n = Math.floor(Math.random() * 16.0).toString(16)
+			  token += n
+			}
+			return token
+		},
+		request(config) {
+			const service = axios.create({
+				baseURL: process.env.VUE_APP_API_URL,
+				timeout: 1000 * 30
+			})
+			// 请求拦截器
+			service.interceptors.request.use(res => {
+				// console.log('请求拦截成功',res)
+				const token = VueCookies.get('x-token')
+				// console.log('toke',token)
+				if(config.baseURL){
+					res.baseURL=config.baseURL
+				}
+				if (token) {
+					res[ 'token' ] = token 
+				  }
+				return res
+			}, err => {
+				console.log('请求拦截失败',err)
+				return err
+			})
+			// 响应拦截器
+			service.interceptors.response.use(res => {
+				return res.data
+			}, err => {
+				console.log('响应拦截失败',err)
+				return err
+			})
+			return  service({
+				method:config.method||'get',
+				url:config.url||'',
+				params:config.params
 			})
 		}
 	}

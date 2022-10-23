@@ -16,6 +16,7 @@
 		"screenfull": "^6.0.2",
 		"videojs-contrib-hls": "^5.15.0",
 		"vue": "^2.7.10",
+		"vue-cookies": "^1.8.1",
 		"vue-drag-verify-img-chip": "^1.1.1",
 		"vue-jsonp": "^2.0.0",
 		"vue-router": "^3.5.1",

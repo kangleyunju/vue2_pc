@@ -29,6 +29,7 @@
 			if(localStorage.getItem('isNight')==1){
 				this.$store.commit('edit',{name:'isNight',val:true})
 			}
+			this.checkLogin()
 		}
 	}
 </script>

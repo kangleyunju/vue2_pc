@@ -14,8 +14,8 @@
 			  <i class="el-icon-arrow-down"></i>
 		  </div>
 		  <el-dropdown-menu slot="dropdown">
-		    <el-dropdown-item command="1">系统设置</el-dropdown-item>
-		    <el-dropdown-item command="2">个人中心</el-dropdown-item>
+		    <el-dropdown-item command="1">个人中心</el-dropdown-item>
+		    <el-dropdown-item command="2">系统设置</el-dropdown-item>
 		    <el-dropdown-item command="3">退出登录</el-dropdown-item>
 		  </el-dropdown-menu>
 		</el-dropdown>
@@ -24,18 +24,10 @@
 </template>
 
 <script>
-	
 	export default {
-		components:{
-			
-		},
-
 		data() {
 			return {
-				userInfo:{
-					name:"曹操曹操曹操",
-					avatar:""
-				}
+
 			}
 		},
 		methods: {
@@ -49,13 +41,16 @@
 			},
 			handleCommand(e){
 				if(e==1){
-					
+					this.$router.push('/user/info')
 				}else if(e==2){
-					
+					this.$router.push('/system/set')
 				}else{
 					this.handleDelete('确定退出登录？')
 					.then(res=>{
-						console.log(res)
+						this.$cookies.remove('userInfo')
+						this.$cookies.remove('token')
+						this.$store.commit('edit',{name:'userInfo',val:{}})
+						this.$router.push('/login')
 					})
 				}
 			}
@@ -116,7 +111,7 @@
 				color: var(--textColor);
 				span{
 					margin: 0 6px;
-					max-width: 80px;
+					max-width: 100px;
 				}
 				.el-image{
 					height: 26px;

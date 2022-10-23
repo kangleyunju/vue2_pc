@@ -16,9 +16,12 @@ vue2，elementui
 有问题可以提Issue，或者发邮件：249042680@qq.com，觉得不错可以点个赞
 
 ### 仓库
-[gitee](https://gitee.com/kangleyunju/vue2_pc)
+| gitee | github |
+| --- | --- |
+| [vue2_pc](https://gitee.com/kangleyunju/vue2_pc) | [vue2_pc](https://github.com/kangleyunju/vue2_pc) |
 
-[github](https://github.com/kangleyunju/vue2_pc)
+### 网址
+在线预览地址: [https://static-2503170c-6f74-4217-ac1a-43133fb6d1b4.bspapp.com/vue2_pc/](https://static-2503170c-6f74-4217-ac1a-43133fb6d1b4.bspapp.com/vue2_pc/)
 
 ### 安装
 ```
@@ -57,6 +60,3 @@ npm i @wangeditor/editor @wangeditor/editor-for-vue
 ```
 npm i vue-ueditor-wrap
 ```
-
-### 网址
-https://static-2503170c-6f74-4217-ac1a-43133fb6d1b4.bspapp.com/vue2_pc

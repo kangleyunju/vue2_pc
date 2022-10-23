@@ -30,7 +30,6 @@
 <script>
 	import 'videojs-contrib-hls' // 直播推流
 	import { videoPlayer } from 'vue-video-player'
-	import {getVideoList} from '@/views/tool/api'
 	export default {
 		components: {
 			videoPlayer
