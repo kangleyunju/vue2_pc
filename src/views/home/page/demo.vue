@@ -1,60 +1,79 @@
 <template>
-	<div class="gifContainer">
-		<h1>今天吃什么</h1>
-		<img :src="require('@/assets/tool/eat.gif')" id="img" />
-		<div class="controllBox">
-			<el-button @click="togglePlay" :type="isPlay?'danger':'primary'" size="small">{{isPlay?'暂停':'播放'}}</el-button>
-			<el-button type="warning" @click="gif.move_to(0)" size="small">重播</el-button>
-			<el-button type="success" @click="gif.move_relative(1)" size="small">下一帧</el-button>
-			<el-button type="info" @click="gif.move_relative(-1)" size="small">上一帧</el-button>
+	<div class="demoContainer">
+		<div>
+			<el-button @click="init" type="primary">生成</el-button>
+			<el-button @click="save" type="success" v-if="img">保存</el-button>
+		</div>
+		
+		<div class="div">
+			<div class="box" ref="poster">
+				<img :src="require('@/assets/home/face.png')"/>
+				<div>姓名:尤雨溪</div>
+			</div>
+			<div class="canvas">
+				<img :src="img" v-if="img"/>
+			</div>
 		</div>
 	</div>
 </template>
 <script>
-	import superGif from "@/views/tool/js/libgif.js"
+	import html2canvas from "html2canvas"
 	export default {
-		components: {},
 		data() {
 			return {
-				isPlay: true,
-				gif:null
+				img:''
 			}
 		},
 		methods: {
-			togglePlay() {
-				if(this.isPlay){
-					this.isPlay=false
-					this.gif.pause()
-				}else{
-					this.isPlay=true
-					this.gif.play()
-				}
-			},
-			initGif() {
-				this.gif = new superGif({
-					gif: img
+			init() {
+				let that=this
+				html2canvas(this.$refs.poster, {
+					dpi: 300,
+					scale: 2,
+					useCORS: true,
+					allowTaint: false,
+					logging: false
+				}).then(function(canvas) {
+					that.img = canvas.toDataURL('image/jpg')
+					console.log(that.img)
+				}).catch((err) => {
+					console.log('错误',err)
 				})
-				this.gif.load()
+			},
+			save(){
+				
 			}
-		},
-		mounted() {
-			this.initGif()
 		}
 	}
 </script>
 <style lang="scss">
-	.gifContainer {
-		text-align: center;
-		height: 100vh;
-		h1{
-			line-height: 100px;
+	body{
+		padding: 20px;
+	}
+	.div {
+		display: flex;
+		.box{
+			height: 500px;
+			width: 500px;
+			background-image: url('@/assets/home/404.png');
+			border: 10px solid #333;
+			padding: 20px;
+			box-sizing: border-box;
+			img{
+				height: 100px;
+				width: 100px;
+				border-radius: 50%;
+			}
 		}
-		img{
-			height: 300px;
-			width: 300px;
-		}
-		.controllBox{
-			padding: 20px 0;
+		.canvas{
+			height: 500px;
+			width: 500px;
+			border: 10px solid #333;
+			box-sizing: border-box;
+			img{
+				height: 100%;
+				width: 100%;
+			}
 		}
 	}
 </style>

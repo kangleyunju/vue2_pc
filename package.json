@@ -13,6 +13,7 @@
 		"axios": "^0.27.2",
 		"default-passive-events": "^2.0.0",
 		"element-ui": "^2.15.6",
+		"html2canvas": "^1.4.1",
 		"screenfull": "^6.0.2",
 		"videojs-contrib-hls": "^5.15.0",
 		"vue": "^2.7.10",
