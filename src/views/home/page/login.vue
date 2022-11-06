@@ -7,7 +7,7 @@
 					<el-input placeholder="请输入账号" maxlength="10" type="text" clearable v-model="form.account" @input="handleInput" />
 				</el-form-item>
 				<el-form-item label="密码" prop="password">
-					<el-input placeholder="请输入密码" maxlength="12" type="password" clearable v-model="form.password" />
+					<el-input placeholder="请输入密码" maxlength="12" type="password" show-password v-model="form.password" />
 				</el-form-item>
 			</el-form>
 			<el-button type="primary" @click="toLogin(1)" class="btn">登录</el-button>
@@ -21,7 +21,7 @@
 					<el-input placeholder="请输入账号" maxlength="20" type="text" clearable v-model="form.account" @input="handleInput" />
 				</el-form-item>
 				<el-form-item label="密码" prop="password">
-					<el-input placeholder="请输入密码" maxlength="20" type="password" clearable v-model="form.password" />
+					<el-input placeholder="请输入密码" maxlength="20" type="password" v-model="form.password" show-password/>
 				</el-form-item>
 			</el-form>
 			<el-button type="primary" @click="toLogin(2)" class="btn">注册</el-button>
@@ -36,7 +36,7 @@
 			return {
 				state: 1, //1登录2注册
 				form: {
-					account: '2424872014',
+					account: '2964321836',
 					password: '123456'
 				},
 				rules: {
@@ -75,16 +75,14 @@
 									name: res.name,
 									avatar: res.qlogo,
 									account: this.form.account,
-									password: this.form.password
+									password: this.form.password,
+									sex:3,
+									desc:''
 								}
-								this.$cookies.set('userInfo', userInfo)
-								//生成token
-								this.$cookies.set('token', {
-									time:new Date().getTime()+24*60*60*1000,
-									val:this.createToken()
-								})
-								this.$message.success(e==1?'登录成功':'注册成功')
+								this.setStorage('userInfo', userInfo)
 								this.$store.commit('edit',{name:'userInfo',val:userInfo})
+								this.$cookies.set('token',this.createToken(),60*60*24 )
+								this.$message.success(e==1?'登录成功':'注册成功')
 								this.$router.push('/')
 							} else {
 								this.$message.error(e==1?'账号或密码错误':'账号已存在')
@@ -94,6 +92,7 @@
 					}
 				})
 			},
+			//背景图
 			getBg(){
 				this.request({
 					baseURL: 'https://api.uomg.com',

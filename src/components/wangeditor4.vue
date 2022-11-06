@@ -1,43 +1,42 @@
 <template>
-	<div class="wangeditorContainer" :class="{disabled:disabled}">
+	<div class="wangeditor4Container" :class="{disabled:disabled}">
 		<div ref="editor"></div>
 	</div>
 </template>
 <script>
 	/**
-	* @name wangeditor4富文本编辑器
-	* @author xie
-	* @property {String} value 内容 
-	* @property {Boolean} disabled 是否禁用
-	* @function changeText 赋值
-	*/
+	 * @name wangeditor4富文本编辑器
+	 * @author xie
+	 * @property {String} value 内容 
+	 * @property {Boolean} disabled 是否禁用
+	 * @function changeText 赋值
+	 */
 	import wangeditor from "wangeditor"
 	export default ({
-		props:{
-			value: { 
-				type: String, 
+		props: {
+			value: {
+				type: String,
 				default: ""
 			},
 			disabled: {
-				type: Boolean, 
+				type: Boolean,
 				default: false
 			}
 		},
 		data() {
 			return {
-				editor:''
+				editor: ''
 			}
 		},
 		methods: {
 			initEditor() {
 				const editor = new wangeditor(this.$refs.editor)
-				this.editor=editor
-				if(this.disabled){
-					editor.config.menus=[]
-					editor.config.showFullScreen = false//隐藏全屏
-				}else{
-					editor.config.menus = [
-						'head', // 标题
+				this.editor = editor
+				if (this.disabled) {
+					editor.config.menus = []
+					editor.config.showFullScreen = false //隐藏全屏
+				} else {
+					editor.config.menus = ['head', // 标题
 						'bold', // 粗体  
 						'fontSize', // 字号  
 						'fontName', // 字体  
@@ -60,7 +59,7 @@
 						'fullscreen' // 全屏
 					]
 				}
-				editor.config.height = 350
+				editor.config.height = 364
 				editor.config.zIndex = 1
 				editor.config.showLinkImg = false //隐藏插入网络图片的功能 
 				editor.config.onchangeTimeout = 400 // 配置触发 onchange 的时间频率，默认为 200ms
@@ -71,32 +70,48 @@
 					this.$emit("update", newHtml);
 				}
 				editor.config.customUploadImg = async (file, insert) => {
-					let imgUrl=URL.createObjectURL(file[0])
+					let imgUrl = URL.createObjectURL(file[0])
 					insert(imgUrl)
-				} 
+				}
 				editor.create()
 				this.changeText(this.value)
 			},
-			changeText(value){
+			changeText(value) {
 				this.editor.txt.html(value)
 				document.activeElement.blur()
-				if(this.disabled){
+				if (this.disabled) {
 					this.editor.$textElem.attr('contenteditable', false)
 				}
 			}
 		},
-		mounted(){
+		mounted() {
 			this.initEditor()
 		}
 	})
 </script>
 <style lang="scss">
-	.wangeditorContainer {
-		&.disabled{
-			.w-e-text{
+	.wangeditor4Container{
+		&.disabled {
+			.w-e-text {
 				background-color: #F5F7FA;
 				cursor: not-allowed;
 			}
+		}
+		.w-e-menu-tooltip-up {
+			padding: 0 5px;
+			top: 40px !important;
+			&.w-e-menu-tooltip-up::after {
+				content: "";
+				position: absolute;
+				top: -50%;
+				left: 50%;
+				margin-left: -5px;
+				border: 5px solid transparent;
+				border-bottom-color: rgba(0, 0, 0, 0.75);
+			}
+		}
+		.w-e-text-container{
+			padding: 0 10px;
 		}
 	}
 </style>

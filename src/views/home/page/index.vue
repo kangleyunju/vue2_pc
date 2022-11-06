@@ -65,20 +65,7 @@
 			}
 		},
 		created() {
-			// console.log(this.request())
-			// return
-			// this.$jsonp('https://dog.ceo/api/breeds/image/random')
-			this.request({
-				baseURL:'https://dog.ceo',
-				url: 'api/breeds/image/random' ,
-				params:{
-					name:1,
-				}
-			}).then(res => {
-				console.log(res)
-			}).catch(err => {
-				console.log(err)
-			})
+
 		}
 	}
 </script>
@@ -87,7 +74,7 @@
 		position: relative;
 		.el-date-editor {
 			position: absolute;
-			top: 26px;
+			top: 12px;
 			left: 20px;
 			width: 125px;
 			z-index: 1;

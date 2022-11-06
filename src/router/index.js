@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import layout from '@/views/home/page/layout.vue'
+import VueCookies from 'vue-cookies'
+import store from '@/store'
 Vue.use(VueRouter)
 // 解决重复点击导航路由报错
 const methodsArray = ['push', 'replace']
@@ -77,21 +79,6 @@ const routes = [{
 		}
 	}]
 }, {
-	path: "/system",
-	component: layout,
-	meta: {
-		title: '系统',
-		icon: 'el-icon-s-home'
-	},
-	children: [{
-		path: 'set',
-		name: 'systemSet',
-		component: () => import('@/views/system/page/set.vue'),
-		meta: {
-			title: '设置'
-		}
-	}]
-}, {
 	path: "/tool",
 	component: layout,
 	meta: {
@@ -99,13 +86,6 @@ const routes = [{
 		icon: 'el-icon-tool'
 	},
 	children: [{
-		path: 'gif',
-		name: 'toolGif',
-		component: () => import('@/views/tool/page/gif.vue'),
-		meta: {
-			title: '动图'
-		}
-	}, {
 		path: 'video',
 		name: 'toolVideo',
 		component: () => import('@/views/tool/page/video.vue'),
@@ -117,7 +97,7 @@ const routes = [{
 		name: 'toolPlayer',
 		component: () => import('@/views/tool/page/player.vue'),
 		meta: {
-			title: '直播'
+			title: '视频播放器'
 		}
 	}, {
 		path: 'verify',
@@ -125,6 +105,13 @@ const routes = [{
 		component: () => import('@/views/tool/page/verify.vue'),
 		meta: {
 			title: '图片验证码'
+		}
+	}, {
+		path: 'gif',
+		name: 'toolGif',
+		component: () => import('@/views/tool/page/gif.vue'),
+		meta: {
+			title: '今天吃什么'
 		}
 	}, {
 		path: 'editor',
@@ -139,7 +126,7 @@ const routes = [{
 	component: layout,
 	meta: {
 		title: '用户',
-		icon: 'el-icon-s-home'
+		icon: 'el-icon-user-solid'
 	},
 	children: [{
 		path: 'info',
@@ -150,6 +137,21 @@ const routes = [{
 		}
 	}]
 }, {
+	path: "/system",
+	component: layout,
+	meta: {
+		title: '系统',
+		icon: 'el-icon-s-tools'
+	},
+	children: [{
+		path: 'set',
+		name: 'systemSet',
+		component: () => import('@/views/system/page/set.vue'),
+		meta: {
+			title: '设置'
+		}
+	}]
+},{
 	path: '/login',
 	name: 'login',
 	component: () => import('@/views/home/page/login.vue'),
@@ -161,7 +163,7 @@ const routes = [{
 	name: 'demo',
 	component: () => import('@/views/home/page/demo.vue'),
 	meta: {
-		title: '今天吃什么'
+		title: 'demo'
 	}
 }, {
 	path: '/diy/phone',
@@ -192,5 +194,20 @@ const router = new VueRouter({
 		y: 0
 	}),
 	routes
+})
+router.beforeEach((to, from, next) => {
+	document.title = to.meta.title
+	//token和用户信息同时存在才跳转,否则跳到登录
+	if (VueCookies.get('token') && localStorage.getItem('userInfo')) {
+		next()
+	} else {
+		localStorage.removeItem('userInfo')
+		VueCookies.remove('token')
+		if (to.path == '/login') {
+			next()
+		} else {
+			next('/login')
+		}
+	}
 })
 export default router

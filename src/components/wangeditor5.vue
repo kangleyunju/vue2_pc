@@ -1,7 +1,7 @@
 <template>
-	<div class="wangeditorContainer" :class="{disabled:disabled}">
+	<div class="wangeditor5Container" :class="{disabled:disabled}">
 		<Toolbar :editor="editor" :defaultConfig="toolbarConfig" class="toolbar" v-if="!disabled" />
-		<Editor :defaultConfig="editorConfig" v-model="html" @onChange="onChange" @onCreated="onCreated" class="editor" />
+		<Editor :defaultConfig="editorConfig" v-model="content" @onChange="onChange" @onCreated="onCreated" class="editor" />
 	</div>
 </template>
 <script>
@@ -12,7 +12,7 @@
 	 * @property {Boolean} disabled 是否禁用
 	 * @function changeText 赋值
 	 */
-	import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
+	import { Toolbar,Editor } from '@wangeditor/editor-for-vue'
 	import { DomEditor } from '@wangeditor/editor'
 	export default {
 		components: { Editor, Toolbar },
@@ -29,7 +29,7 @@
 		data() {
 			return {
 				editor: null,
-				html: '',
+				content: '',
 				toolbarConfig: {
 					excludeKeys: [], //排除的菜单
 					insertKeys: [] //添加的菜单
@@ -49,6 +49,7 @@
 				this.$emit("update", editor.getHtml())
 			},
 			changeText(value) {
+				this.content=value
 				this.editor.blur()
 				if (this.disabled) {
 					this.editor.disable()
@@ -75,24 +76,20 @@
 </script>
 <style lang="scss">
 	@import url("@wangeditor/editor/dist/css/style.css");
-
-	.wangeditorContainer {
+	.wangeditor5Container {
 		z-index: 1000;
-
 		&.disabled * {
 			cursor: not-allowed;
 			background-color: #F5F7FA;
 		}
-
 		.toolbar {
 			border: 1px solid #D3D4DB;
 			border-bottom: none;
 		}
-
 		.editor {
 			overflow: hidden;
 			border: 1px solid #D3D4DB;
-			height: 350px;
+			height: 363px;
 			.w-e-text-placeholder {
 				font-style: normal;
 			}

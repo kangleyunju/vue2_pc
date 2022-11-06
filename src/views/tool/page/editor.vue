@@ -2,13 +2,13 @@
 	<div class="editorContainer">
 		<el-tabs v-model="editorName" type="border-card" @tab-click="changeTab">
 			<el-tab-pane label="ueditor" name="ueditor">
-				<ueditor :value="value" @update="update" />
+				<ueditor :value="value" @update="update" ref="ueditor" />
 			</el-tab-pane>
 			<el-tab-pane label="wangeditor4" name="wangeditor4">
-				<wangeditor4 :value="value" @update="update" />
+				<wangeditor4 :value="value" @update="update" ref="wangeditor4" />
 			</el-tab-pane>
 			<el-tab-pane label="wangeditor5" name="wangeditor5">
-				<wangeditor5 :value="value" @update="update" />
+				<wangeditor5 :value="value" @update="update" ref="wangeditor5" v-if="editorName=='wangeditor5'" />
 			</el-tab-pane>
 		</el-tabs>
 	</div>
@@ -31,23 +31,24 @@
 		},
 		methods: {
 			changeTab(e) {
-				if (e.name) {
-
-				}
+				setTimeout(() => {
+					this.$refs[this.editorName].changeText(this.value)
+				}, 200)
 			},
 			update(e) {
 				this.value = e
-				console.log(this.value)
 			}
 		},
-		created() {
-
+		mounted() {
+			this.$refs[this.editorName].changeText(this.value)
 		}
 	}
 </script>
 <style lang="scss">
 	.editorContainer {
 		margin: 16px;
-		background-color: #fff;
+		.el-tabs__content {
+			padding: 16px;
+		}
 	}
 </style>

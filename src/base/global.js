@@ -28,11 +28,6 @@ export default {
 		})
 	},
 	methods: {
-		checkLogin(){
-			if(VueCookies.get('userInfo')){
-				this.$store.commit('edit',{name:'userInfo',val:VueCookies.get('userInfo')})
-			}
-		},
 		//二次确认封装
 		handleDelete(content = '确定删除吗？', title = '提示', confirmText = '确定', cancelText = '取消') {
 			return new Promise((resolve, reject) => {
@@ -228,6 +223,19 @@ export default {
 				url:config.url||'',
 				params:config.params
 			})
+		},
+		//深拷贝
+		deepCopy(obj){
+			return JSON.parse(JSON.stringify(obj))
+		},
+		setStorage(key,obj){
+			localStorage.setItem(key, JSON.stringify(obj))
+		},
+		getStorage(key){
+			return JSON.parse(localStorage.getItem(key))
+		},
+		removeStorage(key){
+			localStorage.removeItem(key)
 		}
 	}
 }

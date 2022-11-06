@@ -1,11 +1,11 @@
 <template>
 	<div class="ueditorContainer" :class="{disabled:disabled}">
-		<vue-ueditor-wrap v-model="content" :config="config" ref="editor" @ready="ready" editor-id="editor" @beforeInit="beforeInit"/>
+		<vue-ueditor-wrap v-model="content" :config="config" ref="editor" @ready="ready" editor-id="editor" @beforeInit="beforeInit" />
 		<el-dialog title="上传图片" :visible.sync="dialogVisible" :auto-upload="false" custom-class="uploadDialog">
 			<div v-loading="popLoading" class="uploadImgBox">
 				<el-upload action="" :show-file-list="false" accept="image/*" :before-upload="beforeUpload">
 					<div class="img" v-if="imgUrl">
-						<img :src="getImg(imgUrl)" />
+						<img :src="imgUrl" />
 					</div>
 					<div class="add" v-else>
 						<i class="el-icon-plus" />
@@ -52,17 +52,16 @@
 				popLoading: false,
 				imgUrl: '',
 				editor: '',
-				content:'',
+				content: '',
 				config: {
 					autoHeightEnabled: false, // 设置编辑器不自动被内容撑高
-					initialFrameHeight: 330, // 初始容器高度
+					initialFrameHeight: 350, // 初始容器高度
 					initialFrameWidth: "100%", // 初始容器宽度
 					maximumWords: 10000, // 允许的最大字符数
 					serverUrl: '',
 					UEDITOR_HOME_URL: "/ueditor/", // UEditor 是文件的存放路径
 					toolbars: [
-						[
-							"fullscreen", //全屏
+						["fullscreen", //全屏
 							"source", //源代码
 							"undo", //上一步
 							"redo", //下一步
@@ -130,11 +129,8 @@
 				if (file.size / 1024 / 1024 > 2) {
 					this.$message.error('图片不能超过2M!')
 				} else {
-					let formData = new FormData();
-					formData.append("file[]", file)
-					formData.append('dirName', 'articleContent')
 					this.popLoading = true
-					this.imgUrl = ""
+					this.imgUrl = URL.createObjectURL(file)
 					let editor = document.querySelector(".edui-default").getAttribute("id");
 					window.UE.getEditor(editor).execCommand("insertimage", {
 						src: this.imgUrl,
@@ -162,11 +158,11 @@
 				})
 			},
 			changeText(e) {
-				this.content=e
+				this.content = e
 				if (this.disabled) {
-					setTimeout(()=>{
+					setTimeout(() => {
 						UE.getEditor('editor').setDisabled('fullscreen');
-					},300)
+					}, 300)
 				}
 			},
 			ready() {
@@ -182,37 +178,31 @@
 				margin-top: 0;
 			}
 		}
-		.edui-editor-toolbarbox{
+		.edui-editor-toolbarbox {
 			display: block;
 		}
-		&.disabled{
-			.edui-editor-toolbarbox{
+		&.disabled {
+			.edui-editor-toolbarbox {
 				display: none;
 			}
 		}
-
 		.uploadDialog {
 			width: 420px !important;
-
 			.el-dialog__body {
 				padding: 20px 0 !important;
 				margin: 0 !important;
-
 				.uploadImgBox {
 					text-align: center;
-
 					.el-upload {
 						cursor: pointer;
 						margin-top: 10px;
 						height: 114px;
 						box-sizing: border-box;
-
 						.img {
 							position: relative;
 							width: 114px;
 							height: 114px;
 							box-sizing: border-box;
-
 							img {
 								height: 100%;
 								width: 100%;
@@ -220,7 +210,6 @@
 								border-radius: 4px;
 							}
 						}
-
 						.add {
 							width: 114px;
 							height: 114px;
@@ -231,17 +220,14 @@
 							display: flex;
 							flex-direction: column;
 							justify-content: center;
-
 							span {
 								font-size: 11px;
 							}
-
 							.el-icon-plus {
 								font-size: 20px;
 								display: block;
 								margin-bottom: 13px;
 							}
-
 							&:hover {
 								border-color: #5275FB;
 								color: #5275FB;

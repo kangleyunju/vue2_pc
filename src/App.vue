@@ -10,26 +10,22 @@
 
 			}
 		},
-		watch:{
-			$route(n){
-				this.setPageTitle(n.meta.title)
-			}
-		},
 		methods: {
-			setPageTitle(name){
-				document.title=name||this.baseName
+			init(){
+				// console.log('当前环境：'+process.env.NODE_ENV) 
+				if(this.getStorage('isCollapse')==1){
+					this.$store.commit('edit',{name:'isCollapse',val:true})
+				}
+				if(this.getStorage('isNight')==1){
+					this.$store.commit('edit',{name:'isNight',val:true})
+				}
+				if(this.getStorage('userInfo')&&this.$cookies.get('token')){
+					this.$store.commit('edit',{name:'userInfo',val:this.getStorage('userInfo')})
+				}
 			}
 		},
 		mounted() {
-			console.log('当前环境：'+process.env.NODE_ENV)
-			this.setPageTitle()
-			if(localStorage.getItem('isCollapse')==1){
-				this.$store.commit('edit',{name:'isCollapse',val:true})
-			}
-			if(localStorage.getItem('isNight')==1){
-				this.$store.commit('edit',{name:'isNight',val:true})
-			}
-			this.checkLogin()
+			this.init()
 		}
 	}
 </script>
@@ -73,7 +69,6 @@
 		-webkit-line-clamp: 1;
 		-webkit-box-orient: vertical;
 	}
-	
 	.xzw_word2 {
 		overflow: hidden;
 		display: -webkit-box;
@@ -85,8 +80,9 @@
 		align-items: center;
 		justify-content: center;
 	}
+	//页面
 	.pageMain{
-		padding: 16px;
+		padding: 0 24px;
 		margin: 16px;
 		background-color: #fff;
 		border-radius: 4px;
@@ -95,18 +91,39 @@
 		.pageTitle{
 			font-size: 18px;
 			font-weight: bold;
-			margin-bottom: 16px;
+			line-height: 56px;
+			border-bottom:1px solid #eee;
 		}
 		.searchBox{
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			padding-top: 16px;
+			.searchInput{
+				width: 300px;
+				margin-right: 16px;
+				.el-input-group__append{
+					border-color: var(--color-primary);
+					background-color: var(--color-primary);
+					.el-button{
+						border-radius: 0 4px 4px 0;
+						i{
+							color: #fff;
+							font-size: 12px;
+						}
+					}
+				}
+			}
+		}
+		.pageContent{
+			padding: 16px 0;
 		}
 		.el-table{
-			margin: 16px 0;
 			.el-button.delText:hover{
 				color: #ff3e18;
 			}
 		}
 	}
-
 	//滚动条样式
 	::-webkit-scrollbar {
 		height: 8px;
@@ -114,7 +131,7 @@
 	}
 	//内条
 	::-webkit-scrollbar-thumb {
-		background-color: #ccc;
+		background-color: #ddd;
 		border-radius: 10px;
 	}
 	//外条

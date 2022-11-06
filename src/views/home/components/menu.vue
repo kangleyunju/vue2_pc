@@ -43,7 +43,7 @@
 				this.activePath = this.$route.path
 			},
 			solveMenu() {
-				let arr = JSON.parse(JSON.stringify(this.$router.options.routes)) 
+				let arr = JSON.parse(JSON.stringify(this.$router.options.routes))
 				for (let i = arr.length - 1; i >= 0; i--) {
 					if (arr[i].children) {
 						for (let j in arr[i].children) {
@@ -106,14 +106,9 @@
 			overflow: hidden;
 			width: 100% !important;
 			transition: all 0.1s;
-			
 			background-color: transparent;
-			>.el-menu-item{
-				display: flex;
-				align-items: center;
-			}
 			.el-submenu {
-				.el-submenu__title{
+				.el-submenu__title {
 					display: flex;
 					align-items: center;
 				}
@@ -124,16 +119,15 @@
 					padding-left: 50px !important;
 				}
 			}
-
 		}
 	}
-	.dark{
+	.dark {
 		.el-submenu__title, .el-menu-item {
 			color: var(--textColor);
-			&:hover{
+			&:hover {
 				background-color: #333;
 			}
-			&.is-active{
+			&.is-active {
 				background-color: #666;
 				color: var(--textColor);
 			}

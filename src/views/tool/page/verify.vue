@@ -3,6 +3,7 @@
 		<el-tabs v-model="tabName" type="border-card" @tab-click="changeTab">
 			<el-tab-pane label="基础滑块" name="1">
 				<dragVerify
+				v-if="tabName=='1'"
 					ref="dragVerify"
 					:isPassing.sync="isPassing"
 					text="请按住滑块拖动"
@@ -14,6 +15,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="图片滑块" name="2">
 				<dragVerifyImg
+					v-if="tabName=='2'"
 					ref="dragVerifyImg"
 					:imgsrc="img"
 					:isPassing.sync="isPassing2"
@@ -145,6 +147,8 @@
 <style lang="scss">
 	.verifyContainer {
 		margin: 16px;
-		background-color: #fff;
+		.el-tabs{
+			height: 450px;
+		}
 	}
 </style>

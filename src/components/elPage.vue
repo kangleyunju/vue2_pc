@@ -51,5 +51,6 @@
 <style lang="scss">
 	.elPageContainer {
 		text-align: center;
+		padding-top: 16px;
 	}
 </style>

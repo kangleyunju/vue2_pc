@@ -47,16 +47,13 @@
 				}else{
 					this.handleDelete('确定退出登录？')
 					.then(res=>{
-						this.$cookies.remove('userInfo')
 						this.$cookies.remove('token')
 						this.$store.commit('edit',{name:'userInfo',val:{}})
+						this.removeStorage('userInfo')
 						this.$router.push('/login')
 					})
 				}
 			}
-		},
-		created() {
-
 		}
 	}
 </script>

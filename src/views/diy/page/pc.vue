@@ -1,6 +1,6 @@
 <template>
-	<div class="phoneContainer">
-		
+	<div class="phoneContainer xzw_center">
+		敬请期待
 	</div>
 </template>
 
@@ -8,5 +8,9 @@
 </script>
 
 <style lang="scss">
-	.phoneContainer {}
+	.phoneContainer {
+		height: 100vh;
+		font-size: 30px;
+		font-weight: bold;
+	}
 </style>
