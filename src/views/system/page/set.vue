@@ -31,6 +31,16 @@
 		},
 		mounted() {
 			this.$set(this.form,'isNight',this.isNight)
+				// this.request({
+				// 	baseURL: 'https://www.yizhibo.com',
+				// 	url: 'www/web/asyn_index',
+				// 	methods:'post'
+				// }).then(res => {
+				// 	// this.bgImg=res.data[Math.floor(Math.random()*res.data.length)]
+				// })
+				this.$jsonp('https://www.yizhibo.com/www/web/asyn_index').then(res=>{
+					
+				})
 		}
 	}
 </script>

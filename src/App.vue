@@ -86,7 +86,7 @@
 		margin: 16px;
 		background-color: #fff;
 		border-radius: 4px;
-		min-height: calc(100vh - 82px);
+		height: calc(100vh - 82px);
 		box-sizing: border-box;
 		.pageTitle{
 			font-size: 18px;

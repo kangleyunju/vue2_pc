@@ -2,7 +2,7 @@
 	<div class="userInfoContainer pageMain">
 		<div class="pageTitle">个人中心</div>
 		<div class="pageContent">
-			<el-form class="pageContent" :model="form" :rules="rules" ref="form" label-width="100px" label-position="left">
+			<el-form :model="form" :rules="rules" ref="form" label-width="100px" label-position="left">
 				<el-form-item label="头像" prop="account">
 					<el-upload action="" accept="image/*" :auto-upload="true" :show-file-list="false" :before-upload="beforeUpload">
 						<img :src="form.avatar" class="avatar" />
@@ -19,13 +19,13 @@
 				</el-form-item>
 				<el-form-item label="性别" prop="sex">
 					<el-radio-group v-model="form.sex">
-						<el-radio :label="1">男</el-radio>
-						<el-radio :label="2">女</el-radio>
-						<el-radio :label="3">保密</el-radio>
+						<el-radio :label="1" border>男</el-radio>
+						<el-radio :label="2" border>女</el-radio>
+						<el-radio :label="3" border>保密</el-radio>
 					</el-radio-group>
 				</el-form-item>
 				<el-form-item label="个人介绍" prop="desc">
-					<el-input v-model="form.desc" type="textarea" placeholder="请输入昵称" maxlength="100" height show-word-limit :autosize="{ minRows: 4, maxRows: 8 }" />
+					<el-input v-model="form.desc" type="textarea" placeholder="请输入个人介绍" maxlength="100" height show-word-limit :autosize="{ minRows: 4, maxRows: 8 }" />
 				</el-form-item>
 			</el-form>
 			<div class="btnLine">
@@ -86,9 +86,13 @@
 				position: relative;
 				overflow: hidden;
 				text-align: center;
+				border-radius: 10px;
 				img {
 					height: 100px;
 					border-radius: 10px;
+					position: absolute;
+					left: 50%;
+					transform: translate(-50%);
 				}
 				&:before {
 					content: '上传图片';
@@ -105,6 +109,7 @@
 					border-radius: 10px;
 					opacity: 0;
 					transition: all 0.3s;
+					z-index: 10;
 				}
 				&:hover {
 					&:before {
