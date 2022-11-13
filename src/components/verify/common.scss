@@ -1,0 +1,102 @@
+//滑块
+.drag_verify {
+	position: relative;
+	background-color: #e8e8e8;
+	text-align: center;
+	overflow: hidden;
+	.dv_progress_bar {
+		position: absolute;
+		height: 34px;
+		width: 0px;
+	}
+	.dv_text {
+		position: absolute;
+		top: 0px;
+		color: transparent;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		user-select: none;
+		-o-user-select: none;
+		-ms-user-select: none;
+		background: -webkit-gradient(linear,
+				left top,
+				right top,
+				color-stop(0, var(--textColor)),
+				color-stop(0.4, var(--textColor)),
+				color-stop(0.5, #fff),
+				color-stop(0.6, var(--textColor)),
+				color-stop(1, var(--textColor)));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		-webkit-text-size-adjust: none;
+		animation: slidetounlock 3s infinite;
+		* {
+			-webkit-text-fill-color: var(--textColor);
+		}
+	}
+	.dv_handler {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		cursor: move;
+		i {
+			padding-left: 0;
+			font-size: 16px;
+		}
+		.el-icon-circle-check {
+			color: #6c6;
+			margin-top: 9px;
+		}
+	}
+}
+//刷新
+.refresh {
+	position: absolute;
+	right: 0;
+	top: 0;
+	cursor: pointer;
+	font-size: 20px;
+	z-index: 200;
+	color: rgba(255,255,255,0.8);
+	padding: 4px;
+	background-color: rgba(0,0,0,0.5);
+	&:hover{
+		color: rgba(255,255,255,1);
+		background-color: rgba(0,0,0,0.8);
+	}
+}
+//图片
+.tips {
+	position: absolute;
+	bottom: 0;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	width: 100%;
+	font-size: 12px;
+	z-index: 200;
+	&.success {
+		background: rgba(255, 255, 255, 0.6);
+		color: green;
+	}
+	&.danger {
+		background: rgba(0, 0, 0, 0.6);
+		color: yellow;
+	}
+}
+@-webkit-keyframes slidetounlock {
+	0% {
+		background-position: var(--pwidth) 0;
+	}
+	100% {
+		background-position: var(--width) 0;
+	}
+}
+@-webkit-keyframes slidetounlock2 {
+	0% {
+		background-position: var(--pwidth) 0;
+	}
+	100% {
+		background-position: var(--pwidth) 0;
+	}
+}
