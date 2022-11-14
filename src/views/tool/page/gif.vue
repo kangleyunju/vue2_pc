@@ -1,7 +1,7 @@
 <template>
 	<div class="gifContainer">
 		<h1>今天吃什么</h1>
-		<img :src="require('@/assets/tool/eat.gif')" id="img" />
+		<img :src="imgUrl" id="img" />
 		<div class="controllBox">
 			<el-button @click="togglePlay" :type="isPlay?'danger':'primary'" size="small">{{isPlay?'暂停':'播放'}}</el-button>
 			<el-button type="warning" @click="gif.move_to(0)" size="small">重播</el-button>
@@ -17,7 +17,8 @@
 		data() {
 			return {
 				isPlay: true,
-				gif:null
+				gif:null,
+				imgUrl:require('@/assets/tool/eat.gif')
 			}
 		},
 		methods: {
