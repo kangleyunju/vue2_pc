@@ -190,6 +190,19 @@ export default {
 			}
 			return token
 		},
+		downloadFile(path,name){
+			const x = new XMLHttpRequest()
+			x.open('GET', path, true)
+			x.responseType = 'blob'
+			x.onload = function () {
+			  const url = window.URL.createObjectURL(x.response)
+			  const a = document.createElement('a')
+			  a.href = url
+			  a.download = name
+			  a.click()
+			}
+			x.send()
+		},
 		request(config) {
 			const service = axios.create({
 				baseURL: process.env.VUE_APP_API_URL,
