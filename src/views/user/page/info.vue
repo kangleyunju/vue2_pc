@@ -18,7 +18,7 @@
 					<el-input v-model="form.name" placeholder="请输入昵称" maxlength="10" show-word-limit />
 				</el-form-item>
 				<el-form-item label="性别" prop="sex">
-					<el-radio-group v-model="form.sex">
+					<el-radio-group v-model="form.sex" size="medium">
 						<el-radio :label="1" border>男</el-radio>
 						<el-radio :label="2" border>女</el-radio>
 						<el-radio :label="3" border>保密</el-radio>
@@ -29,7 +29,7 @@
 				</el-form-item>
 			</el-form>
 			<div class="btnLine">
-				<el-button type="primary" @click="save" size="small">保存修改</el-button>
+				<el-button type="primary" @click="save" size="medium">保存修改</el-button>
 			</div>
 		</div>
 	</div>
@@ -68,9 +68,18 @@
 						this.$message.success('修改成功')
 					}
 				})
+			},
+			getIp(){
+				return
+				this.$jsonp(
+					'https://apis.map.qq.com/ws/location/v1/ip?output=jsonp&ip=111.206.145.41&key=WLABZ-45G3F-Q3CJO-NWTGZ-O6DLE-QQBGN'
+				).then(res => {
+					console.log(res)
+				})
 			}
 		},
 		mounted() {
+			this.getIp()
 			this.form = this.deepCopy(this.userInfo)
 		}
 	}

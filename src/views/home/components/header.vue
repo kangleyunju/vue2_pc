@@ -59,7 +59,7 @@
 </script>
 <style lang="scss">
 	.headerContainer{
-		height: 50px;
+		height: 48px;
 		color: var(--textColor);
 		background-color: var(--bgColor);
 		position: fixed;

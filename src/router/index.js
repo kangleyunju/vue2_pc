@@ -120,6 +120,13 @@ const routes = [{
 		meta: {
 			title: '富文本编辑器'
 		}
+	},{
+		path: 'map',
+		name: 'toolMap',
+		component: () => import('@/views/tool/page/map.vue'),
+		meta: {
+			title: '腾讯地图'
+		}
 	}]
 }, {
 	path: "/user",

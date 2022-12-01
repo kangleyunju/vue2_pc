@@ -99,17 +99,6 @@
 			.searchInput {
 				width: 300px;
 				margin-right: 16px;
-				.el-input-group__append {
-					border-color: var(--color-primary);
-					background-color: var(--color-primary);
-					.el-button {
-						border-radius: 0 4px 4px 0;
-						i {
-							color: #fff;
-							font-size: 12px;
-						}
-					}
-				}
 			}
 		}
 		.pageContent {
@@ -121,10 +110,10 @@
 			}
 		}
 	}
-	//滚动条样式
+	//谷歌滚动条样式
 	::-webkit-scrollbar {
-		height: 8px;
-		width: 8px;
+		height: 6px;
+		width: 6px;
 	}
 	//内条
 	::-webkit-scrollbar-thumb {
@@ -134,5 +123,10 @@
 	//外条
 	::-webkit-scrollbar-track {
 		background-color: #eee;
+	}
+	//火狐浏览器滚动条
+	* {
+	  scrollbar-color: #d7d7d7 #f2f2f2; /* 滑块颜色  滚动条背景颜色 */
+	  scrollbar-width: thin; /* 滚动条宽度有三种：thin、auto、none */
 	}
 </style>

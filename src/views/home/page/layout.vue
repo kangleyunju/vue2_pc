@@ -43,7 +43,7 @@
 		.viewBox{
 			width: 100%;
 			height: 100%;
-			padding: 50px 0 0;
+			padding: 48px 0 0;
 			box-sizing: border-box;
 			overflow-x: auto;
 		}

@@ -108,6 +108,14 @@
 			transition: all 0.1s;
 			background-color: transparent;
 			.el-submenu {
+				&.is-active{
+					.el-submenu__title{
+						color: var(--color-primary);
+						i{
+							color: var(--color-primary);
+						}
+					}
+				}
 				.el-submenu__title {
 					display: flex;
 					align-items: center;
