@@ -3,7 +3,7 @@
 		<div class="inBox">
 			<div>404</div>
 			<p>雾霾太大，连页面都看不见了！</p>
-			<el-button @click="$router.push('/')" type="primary">回到首页</el-button>
+			<el-button @click="$router.push('/')" type="primary" size="medium">回到首页</el-button>
 		</div>
 	</div>
 </template>

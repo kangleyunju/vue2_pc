@@ -27,10 +27,10 @@
 	import dragVerifyRotate from "@/components/verify/dragVerifyImgRotate";
 	export default {
 		components: {
-			dragVerify,
-			dragVerifyImg,
-			dragVerifyChip,
-			dragVerifyRotate
+			// dragVerify,
+			// dragVerifyImg,
+			// dragVerifyChip,
+			// dragVerifyRotate
 		},
 		data() {
 			return {

@@ -1,7 +1,5 @@
 import { mapState } from 'vuex'
-import elPage from "@/components/elPage"
 import sortable from 'vuedraggable' //拖拽
-import svgIcon from '@/components/svgIcon.vue'
 import axios from 'axios'
 import VueCookies from 'vue-cookies'
 const requireAll = requireContext => requireContext.keys().map(requireContext)
@@ -16,9 +14,7 @@ export default {
 		}
 	},
 	components: {
-		elPage,
-		sortable,
-		svgIcon
+		sortable
 	},
 	computed: {
 		...mapState({
