@@ -35,9 +35,6 @@
 		--bgColor: #fff;
 		--textColor: #333;
 		--borderColor: #e6e6e6;
-		// color: var(--textColor);
-		// background-color: var(--bgColor);
-		overflow: hidden;
 		&.dark {
 			--bgColor: #141414;
 			--textColor: #fff;
@@ -76,6 +73,12 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+	.grayscale {
+		-webkit-filter: grayscale(100%);
+		-moz-filter: grayscale(100%);
+		-ms-filter: grayscale(100%);
+		-o-filter: grayscale(100%);
 	}
 	//页面
 	.pageMain {
@@ -126,7 +129,7 @@
 	}
 	//火狐浏览器滚动条
 	* {
-	  scrollbar-color: #d7d7d7 #f2f2f2; /* 滑块颜色  滚动条背景颜色 */
-	  scrollbar-width: thin; /* 滚动条宽度有三种：thin、auto、none */
+		scrollbar-color: #d7d7d7 #f2f2f2; //滑块颜色  滚动条背景颜色
+		scrollbar-width: thin; // 滚动条宽度有三种：thin、auto、none
 	}
 </style>
