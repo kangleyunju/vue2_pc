@@ -1,14 +1,15 @@
 <template>
 	<div class="echartsContainer pageMain">
-		<div id="echart"></div>
+		<div class="cont">
+			<div class="title">环形图</div>
+			<div class="echart" id="echart"></div>
+		</div>
 	</div>
 </template>
 <script>
 	export default {
 		data() {
-			return {
-				
-			}
+			return {}
 		},
 		// 页面初始化挂载dom
 		mounted() {
@@ -17,8 +18,8 @@
 		methods: {
 			getLoadEcharts() {
 				var myChart = this.$echarts.init(document.getElementById("echart"));
-				var colorList = ["#4FE894", "#EF0C27", "#FEE7EA"];
-				var listData = [{ name: "不明", value: 20 }, { name: "已判明", value: 20 }, { name: "未发现", value: 20 }];
+				var colorList = ["#ff0000", "#00ff00", "#e6df02"];
+				var listData = [{ name: "阳性", value: 20 }, { name: "阴性", value: 20 }, { name: "无症状", value: 20 }]
 				var option = {
 					color: colorList,
 					title: {
@@ -26,7 +27,7 @@
 						y: "center",
 						textStyle: {
 							color: "#000",
-							fontSize: 20
+							fontSize: 40
 						}
 					},
 					legend: {
@@ -47,11 +48,11 @@
 					series: [{
 						type: "pie",
 						center: ['50%', '50%'],
-						radius: ['55%', '35%'],
+						radius: ['50%', '30%'],
 						itemStyle: {
 							normal: {
 								color: function(params) {
-									return colorList[params.dataIndex];
+									return colorList[params.dataIndex]
 								}
 							}
 						},
@@ -60,7 +61,7 @@
 							fontSize: 10,
 							color: "#000",
 							formatter: function(data) {
-								return data.name + ":" + data.percent.toFixed(0) + "%";
+								return data.name + ":" + data.percent.toFixed(0) + "%"
 							}
 						},
 						labelLine: {
@@ -75,14 +76,27 @@
 						data: listData
 					}]
 				};
-				myChart.setOption(option);
+				myChart.setOption(option)
 			}
 		}
 	};
 </script>
-<style scoped>
-	#echart {
-		width: 100%;
-		height: 100%;
+<style lang="scss">
+	.echartsContainer{
+		padding: 24px;
+		.cont{
+			border: 1px solid red;
+			width: 300px;
+			.title{
+				line-height: 40px;
+				font-size: 18px;
+				font-weight: 600;
+			}
+			.echart{
+				width: 300px;
+				height: 300px;
+				border: 1px solid blue;
+			}
+		}
 	}
 </style>
