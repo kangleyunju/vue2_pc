@@ -14,15 +14,7 @@
 	</div>
 </template>
 <script>
-	import ueditor from "@/components/ueditor"
-	import wangeditor4 from "@/components/wangeditor4"
-	import wangeditor5 from "@/components/wangeditor5"
 	export default {
-		components: {
-			ueditor,
-			wangeditor4,
-			wangeditor5
-		},
 		data() {
 			return {
 				value: '',

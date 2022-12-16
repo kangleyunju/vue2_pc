@@ -79,6 +79,21 @@ const routes = [{
 		}
 	}]
 }, {
+	path: "/echarts",
+	component: layout,
+	meta: {
+		title: '图表',
+		icon: 'el-icon-pie-chart'
+	},
+	children: [{
+		path: 'demo',
+		name: 'echartsDemo',
+		component: () => import('@/views/echarts/page/demo.vue'),
+		meta: {
+			title: '移动端列表'
+		}
+	}]
+}, {
 	path: "/tool",
 	component: layout,
 	meta: {
@@ -120,7 +135,7 @@ const routes = [{
 		meta: {
 			title: '富文本编辑器'
 		}
-	},{
+	}, {
 		path: 'map',
 		name: 'toolMap',
 		component: () => import('@/views/tool/page/map.vue'),
@@ -144,6 +159,21 @@ const routes = [{
 		}
 	}]
 }, {
+	path: "/demo",
+	component: layout,
+	meta: {
+		title: '例子',
+		icon: 'el-icon-eleme'
+	},
+	children: [{
+		path: 'test',
+		name: 'demoTest',
+		component: () => import('@/views/demo/page/test.vue'),
+		meta: {
+			title: '例子'
+		}
+	}]
+}, {
 	path: "/system",
 	component: layout,
 	meta: {
@@ -158,7 +188,7 @@ const routes = [{
 			title: '设置'
 		}
 	}]
-},{
+}, {
 	path: '/login',
 	name: 'login',
 	component: () => import('@/views/home/page/login.vue'),

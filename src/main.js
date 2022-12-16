@@ -15,18 +15,27 @@ import { VueJsonp } from 'vue-jsonp'
 import global from '@/base/global'
 //引入cookie
 import VueCookies from 'vue-cookies'
+//引入echarts
+import * as echarts from 'echarts'
+Vue.prototype.$echarts = echarts
+
 //全局注册components下的组件
 const requireComponent = require.context('./components', true, /.vue$/)
 requireComponent.keys().forEach((componentName) => {
-	// console.log(componentName)
-	// 获取组件配置
-	// const componentConfig = requireComponent(componentName)
-	componentName = componentName.match(/\/(\S*).vue/)[1]
-	// componentName = componentName.match(/\/(\S*).vue/)[1]
-	
-	console.log(componentName)
-	// Vue.component(componentName,componentConfig.default)
+	const componentConfig = requireComponent(componentName)
+	//以最后一级的名称作为组件名
+	componentName = componentName.replace(componentName.match(/.(\S*)\//)[1],'').match(/.\/(\S*).vue/)[1]
+	Vue.component(componentName,componentConfig.default)
 })
+
+//全局注册directive下的指令
+const requireDirective = require.context('./directive', true, /.js$/)
+requireDirective.keys().forEach((directiveName) => {
+	const directiveConfig = requireDirective(directiveName)
+	directiveName = directiveName.match(/.\/(\S*).js/)[1]
+	Vue.directive(directiveName,directiveConfig.default[directiveName])
+})
+
 Vue.use(ElementUI).use(VueJsonp).use(VueCookies).mixin(global)
 Vue.config.productionTip = false
 new Vue({

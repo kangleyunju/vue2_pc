@@ -1,5 +1,5 @@
 <template>
-	<div class="videoContainer pageMain" v-loading="loading">
+	<div class="videoContainer pageMain" v-loading="loading" element-loading-text="拼命加载中">
 		<div class="pageTitle">短视频</div>
 		<div class="pageContent">
 			<div class="item" v-for="(item,index) in list" :key="index" @mouseenter="mouseenter(index)" @mouseleave="mouseleave(index)">
@@ -52,7 +52,9 @@
 				var audioElement = new Audio(url)
 				return new Promise((resolve, reject) => {
 					audioElement.addEventListener("loadedmetadata", function() {
-						resolve(parseInt(document.getElementById('video' + i).duration))
+						setTimeout(()=>{
+							resolve(parseInt(document.getElementById('video' + i).duration))
+						},1000)
 					})
 				})
 			},

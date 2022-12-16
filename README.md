@@ -60,3 +60,7 @@ npm i @wangeditor/editor @wangeditor/editor-for-vue
 ```
 npm i vue-ueditor-wrap
 ```
+* 拖拽js
+```
+npm i vuedraggable
+```
