@@ -63,4 +63,5 @@ npm i vue-ueditor-wrap
 * 拖拽js
 ```
 npm i vuedraggable
+npm i sortablejs
 ```

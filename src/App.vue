@@ -120,12 +120,12 @@
 	}
 	//内条
 	::-webkit-scrollbar-thumb {
-		background-image: -webkit-linear-gradient(45deg, hsla(0, 0%, 100%, .2) 25%, transparent 0, transparent 50%, hsla(0, 0%, 100%, .2) 0, hsla(0, 0%, 100%, .2) 75%, transparent 0, transparent);
+		background-image: -webkit-linear-gradient(45deg, hsla(244, 96%, 47%, 0.2) 10%, hsla(0, 100%, 50%, 0.2) 60%);
 		border-radius: 10px;
 	}
 	//外条
 	::-webkit-scrollbar-track {
-		background-color: #eee;
+		background-color: #ddd;
 	}
 	//火狐浏览器滚动条
 	* {

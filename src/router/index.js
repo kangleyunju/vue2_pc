@@ -166,11 +166,18 @@ const routes = [{
 		icon: 'el-icon-eleme'
 	},
 	children: [{
-		path: 'test',
-		name: 'demoTest',
-		component: () => import('@/views/demo/page/test.vue'),
+		path: 'select',
+		name: 'demoSelect',
+		component: () => import('@/views/demo/page/select.vue'),
 		meta: {
-			title: '例子'
+			title: 'select'
+		}
+	},{
+		path: 'table',
+		name: 'demoTable',
+		component: () => import('@/views/demo/page/table.vue'),
+		meta: {
+			title: 'table'
 		}
 	}]
 }, {
