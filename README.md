@@ -65,3 +65,7 @@ npm i vue-ueditor-wrap
 npm i vuedraggable
 npm i sortablejs
 ```
+* 页面进度条
+```
+npm i nprogress
+```

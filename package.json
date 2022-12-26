@@ -16,6 +16,7 @@
 		"echarts-gl": "^2.0.9",
 		"element-ui": "^2.15.6",
 		"html2canvas": "^1.4.1",
+		"nprogress": "^0.2.0",
 		"screenfull": "^6.0.2",
 		"sortablejs": "^1.15.0",
 		"videojs-contrib-hls": "^5.15.0",

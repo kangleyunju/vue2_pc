@@ -1,6 +1,6 @@
 <template>
 	<div class="userInfoContainer pageMain">
-		<div class="pageTitle">个人中心</div>
+		<div class="pageTitle" v-longpress="save">个人中心</div>
 		<div class="pageContent">
 			<el-form :model="form" :rules="rules" ref="form" label-width="100px" label-position="left">
 				<el-form-item label="头像" prop="account">
@@ -9,7 +9,7 @@
 					</el-upload>
 				</el-form-item>
 				<el-form-item label="账号" prop="account">
-					<el-input v-model="form.account" disabled />
+					<el-input v-model="form.account" disabled v-copy="form.account"/>
 				</el-form-item>
 				<el-form-item label="密码" prop="password">
 					<el-input v-model="form.password" type="password" autocomplete="off" show-password maxlength="12" />
@@ -68,18 +68,9 @@
 						this.$message.success('修改成功')
 					}
 				})
-			},
-			getIp(){
-				return
-				this.$jsonp(
-					'https://apis.map.qq.com/ws/location/v1/ip?output=jsonp&ip=111.206.145.41&key=WLABZ-45G3F-Q3CJO-NWTGZ-O6DLE-QQBGN'
-				).then(res => {
-					console.log(res)
-				})
 			}
 		},
 		mounted() {
-			this.getIp()
 			this.form = this.deepCopy(this.userInfo)
 		}
 	}
