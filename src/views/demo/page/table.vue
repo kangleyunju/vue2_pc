@@ -6,7 +6,7 @@
       </el-select>
     </div>
     <div class="pageContent">
-      <el-table :data="tableData" border v-if="show" v-loading="loading">
+      <el-table :data="tableData" border v-if="show" v-loading="loading" :row-class-name="rowClassName" :header-row-class-name="rowClassName">
         <el-table-column prop="date" label="序号" width="60" type="index" align="center" fixed></el-table-column>
         <el-table-column :prop="item.prop" :label="item.label" min-width="180" v-for="(item,index) in columnProp" :key="index"></el-table-column>
       </el-table>
@@ -39,7 +39,9 @@
           label: '不可以拖拽'
         }],
         el: null,
-        loading: false
+        loading: false,
+        aa: null,
+        rowClassName: ''
       }
     },
     methods: {
@@ -47,15 +49,10 @@
         console.log(e)
       },
       change() {
-        console.log(this.value,sortable)
-        // this.initSort()
-        this.loading=true
-        setTimeout(()=>{
-          this.loading=false
-        },1000)
+        this.rowClassName = this.value == 2 ? 'noMove' : ''
       },
       getList() {
-        this.loading=true
+        this.loading = true
         setTimeout(() => {
           this.tableData = [{
             name: '张三',
@@ -76,26 +73,33 @@
           }]
           this.initRow()
           this.initColumn()
-          this.loading=false
+          this.loading = false
         }, 1000)
       },
       initRow() {
-        this.el = document.querySelector('.el-table__body-wrapper > table > tbody')
-        sortable.create(this.el, {
-          disabled: this.value == 2,
+        const el = document.querySelector('.el-table__body-wrapper > table > tbody')
+        sortable.create(el, {
+          filter: '.noMove',
           handle: '.el-table__row',
           animation: 200,
           onEnd: (e) => {}
         })
       },
       initColumn() {
+        let that = this
         const el = document.querySelector('.el-table__header-wrapper tr')
         sortable.create(el, {
-          disabled: this.value == 2,
+          filter: '.noMove',
           animation: 200,
           delay: 0,
           onEnd: (e) => {
-            this.columnProp.splice(e.oldIndex-1,1,...this.columnProp.splice(e.newIndex-1, 1 , this.columnProp[e.oldIndex-1]));
+            // 拖动列这里使用了深拷贝,否则排序会出错
+            let columnProp = this.deepCopy(this.columnProp)
+            columnProp.splice(e.oldIndex - 1, 1, ...columnProp.splice(e.newIndex - 1, 1, columnProp[e.oldIndex - 1]))
+            this.columnProp = []
+            this.$nextTick(() => {
+              this.columnProp = columnProp
+            })
           }
         })
       }
@@ -106,15 +110,5 @@
   }
 </script>
 <style lang="scss">
-  .testContainer {
-    .el-table {
-        .el-table__header-wrapper {
-          tr {
-            th {
-              cursor: move;
-            }
-          }
-        }
-      }
-  }
+  .testContainer {}
 </style>

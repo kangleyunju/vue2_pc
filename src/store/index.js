@@ -7,7 +7,6 @@ export default new Vuex.Store({
 	state: {
 		isCollapse:false,//是否折叠菜单
 		isNight:false,//是否夜间模式
-		isCheck:false,
 		userInfo:{}
 	},
 	getters: {},

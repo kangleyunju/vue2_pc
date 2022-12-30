@@ -199,6 +199,7 @@ export default {
 			}
 			x.send()
 		},
+    //请求
 		request(config) {
 			const service = axios.create({
 				baseURL: process.env.VUE_APP_API_URL,
@@ -206,9 +207,7 @@ export default {
 			})
 			// 请求拦截器
 			service.interceptors.request.use(res => {
-				// console.log('请求拦截成功',res)
 				const token = VueCookies.get('x-token')
-				// console.log('toke',token)
 				if(config.baseURL){
 					res.baseURL=config.baseURL
 				}
