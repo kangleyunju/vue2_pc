@@ -1,7 +1,12 @@
 <template>
   <div class="headerContainer noCopy" :class="{'collapse':isCollapse}">
 	<div class="left">
-		<el-button :type="isCollapse?'':'primary'" size="mini" :icon="isCollapse?'el-icon-caret-right':'el-icon-caret-left'" @click="changeCollapse">{{isCollapse?'展开':'折叠'}}</el-button>
+    <div class="collapseBtn" @click="changeCollapse">
+      <i :class="isCollapse?'el-icon-caret-right':'el-icon-caret-left'"></i>
+    </div>
+<!--    <el-breadcrumb separator="/">
+      <el-breadcrumb-item v-for="(item,index) in breadcrumbList" :key="index">{{item.meta.title}}</el-breadcrumb-item>
+    </el-breadcrumb> -->
 	</div>
 	<div class="right">
 		<div class="theme" @click="changeNight">
@@ -27,10 +32,26 @@
 	export default {
 		data() {
 			return {
-
+        breadcrumbList:[]
 			}
 		},
+    watch: {
+      $route: {
+        handler() {
+          this.getBreadcrumb()
+        },
+        immediate: true//立即监听
+      }
+    },
 		methods: {
+      //面包屑处理
+      getBreadcrumb(){
+        console.log(1111111111111)
+        this.breadcrumbList=this.$route.matched
+        if(this.breadcrumbList[0].meta.title==this.breadcrumbList[1].meta.title){
+          this.breadcrumbList.splice(1,1)
+        }
+      },
 			changeCollapse(){
 				this.$store.commit('edit',{name:'isCollapse',val:this.isCollapse?false:true})
 				localStorage.setItem('isCollapse',this.isCollapse?1:0)
@@ -70,7 +91,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0 20px;
+		padding: 0 20px 0 0;
 		box-sizing: border-box;
 		border-bottom: 1px solid var(--borderColor);
 		box-shadow: 0 4px 15px rgb(0 0 0 / 8%);
@@ -79,11 +100,24 @@
 			left: 64px;
 		}
 		.left{
-			font-size: 20px;
-			cursor: pointer;
-			&:hover{
-				color: var(--color-primary);
-			}
+      display: flex;
+      align-items: center;
+      height: 100%;
+      .collapseBtn{
+        width: 40px;
+        height: 48px;
+        line-height: 48px;
+        text-align: center;
+        margin-right: 4px;
+        cursor: pointer;
+        &:hover{
+          background-color: #d8d8d8;
+        }
+        .el-icon-caret-left,.el-icon-caret-right{
+          color: var(--textColor);
+          font-size: 18px;
+        }
+      }
 		}
 		.right{
 			display: flex;

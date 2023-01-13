@@ -119,6 +119,7 @@
 		background-color: #f8f8f8;
 		.formBox {
 			width: 300px;
+      color:var(--textColor);
 			background-color: var(--bgColor);
 			padding: 20px 40px 20px;
 			border-radius: 4px;
@@ -132,6 +133,7 @@
 			.el-form {
 				.el-form-item__label {
 					line-height: 30px;
+          color:var(--textColor);
 				}
 				.el-form-item {
 					margin-bottom: 18px;

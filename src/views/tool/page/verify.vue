@@ -17,21 +17,7 @@
 	</div>
 </template>
 <script>
-	// 基本滑块验证组件
-	import dragVerify from "@/components/verify/dragVerify";
-	// 图片滑块组件
-	import dragVerifyImg from "@/components/verify/dragVerifyImg";
-	// 拼图滑块组件
-	import dragVerifyChip from "@/components/verify/dragVerifyImgChip";
-	// 旋转图片滑块组件
-	import dragVerifyRotate from "@/components/verify/dragVerifyImgRotate";
 	export default {
-		components: {
-			// dragVerify,
-			// dragVerifyImg,
-			// dragVerifyChip,
-			// dragVerifyRotate
-		},
 		data() {
 			return {
 				img: '',

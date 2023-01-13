@@ -93,7 +93,7 @@ const routes = [{
     name: 'echartsDemo',
     component: () => import('@/views/echarts/page/demo.vue'),
     meta: {
-      title: '移动端列表'
+      title: '图表'
     }
   }]
 }, {
@@ -182,6 +182,13 @@ const routes = [{
     meta: {
       title: 'table'
     }
+  },{
+    path: 'datePicker',
+    name: 'demoDatePicker',
+    component: () => import('@/views/demo/page/datePicker.vue'),
+    meta: {
+      title: 'datePicker'
+    }
   }]
 }, {
   path: "/system",
@@ -210,7 +217,7 @@ const routes = [{
   name: 'demo',
   component: () => import('@/views/home/page/demo.vue'),
   meta: {
-    title: 'demo'
+    title: '测试'
   }
 }, {
   path: '/diy/phone',

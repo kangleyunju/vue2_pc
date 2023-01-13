@@ -74,6 +74,7 @@
 		align-items: center;
 		justify-content: center;
 	}
+  //页面变灰
 	.grayscale {
 		-webkit-filter: grayscale(100%);
 		-moz-filter: grayscale(100%);
@@ -86,7 +87,7 @@
 		margin: 16px;
 		background-color: #fff;
 		border-radius: 4px;
-		height: calc(100vh - 82px);
+		min-height: calc(100vh - 82px);
 		box-sizing: border-box;
 		.pageTitle {
 			font-size: 18px;
@@ -120,14 +121,14 @@
 	}
 	//内条
 	::-webkit-scrollbar-thumb {
-		background-image: -webkit-linear-gradient(45deg, hsla(244, 96%, 47%, 0.2) 10%, hsla(0, 100%, 50%, 0.2) 60%);
+		background: #d7d7d7;
 		border-radius: 10px;
 	}
 	//外条
 	::-webkit-scrollbar-track {
-		background-color: #ddd;
+		background-color: #f2f2f2;
 	}
-	//火狐浏览器滚动条
+	//火狐滚动条样式
 	* {
 		scrollbar-color: #d7d7d7 #f2f2f2; //滑块颜色  滚动条背景颜色
 		scrollbar-width: thin; // 滚动条宽度有三种：thin、auto、none

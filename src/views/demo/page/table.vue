@@ -1,5 +1,6 @@
 <template>
   <div class="testContainer pageMain">
+    <div class="pageTitle">el-table行列拖动</div>
     <div class="searchBox">
       <el-select v-model="value" placeholder="请选择" @change="change">
         <el-option v-for="item in array" :key="item.value" :label="item.label" :value="item.value"></el-option>
@@ -76,6 +77,7 @@
           this.loading = false
         }, 1000)
       },
+      //横向拖动
       initRow() {
         const el = document.querySelector('.el-table__body-wrapper > table > tbody')
         sortable.create(el, {
@@ -85,6 +87,7 @@
           onEnd: (e) => {}
         })
       },
+      //纵向拖动
       initColumn() {
         let that = this
         const el = document.querySelector('.el-table__header-wrapper tr')

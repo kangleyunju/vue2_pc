@@ -1,6 +1,7 @@
 <template>
 	<div class="dayContainer pageMain">
-		<el-date-picker v-model="monthValue" placeholder="请选择月份" type="date" align="left" @change="changeMonth" :clearable="false" :editable="false" />
+    11111111
+<!-- 		<el-date-picker v-model="monthValue" placeholder="请选择月份" type="date" align="left" @change="changeMonth" :clearable="false" :editable="false" />
 		<el-calendar v-model="value" :first-day-of-week="7">
 			<template slot="dateCell" slot-scope="{date, data}">
 				<div class="cell" :class="{ selected : isSelected(date, data) }">
@@ -9,7 +10,7 @@
 					</div>
 				</div>
 			</template>
-		</el-calendar>
+		</el-calendar> -->
 	</div>
 </template>
 <script>
