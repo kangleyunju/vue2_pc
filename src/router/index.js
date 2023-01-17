@@ -250,7 +250,7 @@ const router = new VueRouter({
   routes
 })
 router.beforeEach((to, from, next) => {
-  nprogress.start()
+  // nprogress.start()
   document.title = to.meta.title
   //token和用户信息同时存在才跳转,否则跳到登录
   if (VueCookies.get('token') && localStorage.getItem('userInfo')) {

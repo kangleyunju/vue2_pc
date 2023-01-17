@@ -1,8 +1,8 @@
 <template>
-	<div class="dayContainer pageMain">
-    11111111
-<!-- 		<el-date-picker v-model="monthValue" placeholder="请选择月份" type="date" align="left" @change="changeMonth" :clearable="false" :editable="false" />
-		<el-calendar v-model="value" :first-day-of-week="7">
+	<div class="dayContainer pageMain" >
+    <div class="bgImg" :style="{backgroundImage:'url('+bgImg+')'}"></div>
+		<el-date-picker v-model="monthValue" placeholder="请选择月份" type="date" align="left" @change="changeMonth" :clearable="false" :editable="false" />
+		<el-calendar v-model="value" :first-day-of-week="7" >
 			<template slot="dateCell" slot-scope="{date, data}">
 				<div class="cell" :class="{ selected : isSelected(date, data) }">
 					<div class="solar">{{ data.day.split('-')[2]}}</div>
@@ -10,7 +10,7 @@
 					</div>
 				</div>
 			</template>
-		</el-calendar> -->
+		</el-calendar>
 	</div>
 </template>
 <script>
@@ -20,7 +20,9 @@
 			return {
 				value: new Date(), //当前日期
 				selectedDates: [], //选中的日期
-				monthValue: new Date() //当前月份
+				monthValue: new Date() ,//当前月份
+        bgImg:require('@/assets/home/bg2.jpg'),
+        // bgImg:''
 			}
 		},
 		watch: {
@@ -73,6 +75,16 @@
 <style lang="scss">
 	.dayContainer {
 		position: relative;
+    .bgImg{
+      // filter: blur(1px);
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      right: 0;
+      z-index: 0;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
 		.el-date-editor {
 			position: absolute;
 			top: 12px;
@@ -89,29 +101,68 @@
 			}
 		}
 		.el-calendar {
+      position: absolute;
+      top:0;
+      left: 0;
+      background-color: transparent;
 			.el-calendar__title {
 				opacity: 0;
 			}
-			.cell {
-				text-align: center;
-				.solar {
-					font-weight: bold;
-					margin: 8px 0 8px;
-				}
-			}
-			.current {
-				.lunar {
-					&.festival {
-						color: #ff5500;
-					}
-				}
-			}
-			.el-calendar-table td.is-selected {
-				background-color: #E8F3FF;
-			}
-			.el-calendar__body {
-				padding-bottom: 20px;
-			}
+      .el-calendar__body{
+        padding: 0 20px 20px;
+        thead{
+          th{
+            color: #000;
+            font-weight: bold;
+          }
+        }
+        .cell {
+        	text-align: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          height: 100%;
+          padding: 8px 0;
+          box-sizing: border-box;
+        	.solar {
+        		font-weight: bold;
+        	}
+          *{
+            transition: all 0.2s;
+          }
+        }
+        .current {
+          background-color: rgba(255,255,255,0.7);
+          background-color: rgba(0,0,0,0.6);
+          *{
+            color: #fff;
+            color: rgba(255,255,255,0.90);
+          }
+        	.lunar {
+        		&.festival {
+        			color: var(--color-danger);
+        		}
+        	}
+        }
+        .prev,.next{
+          background-color: rgba(0,0,0,0.2);
+          *{
+            color: rgba(255,255,255,0.5);
+          }
+        }
+        //悬浮色
+        .el-calendar-day:hover{
+          background-color: rgba(0,0,0,0.6);
+        }
+        //选中色
+        .el-calendar-table td.is-selected {
+          background-color: rgba(0,0,0,0.9);
+          *{
+            color: rgba(255,255,255,1);
+            font-size: 16px;
+          }
+        }
+      }
 		}
 	}
 </style>

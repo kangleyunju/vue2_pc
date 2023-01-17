@@ -32,7 +32,6 @@
 	.layoutContainer{
 		display: flex;
 		padding-left: 200px;
-		min-width: 1000px;
 		min-height: 500px;
 		transition: all 0.3s;
 		height: 100vh;
@@ -42,8 +41,9 @@
 		}
 		.viewBox{
 			width: 100%;
-			height: 100%;
-			padding: 48px 0 0;
+			height:calc(100% - 48px);
+      min-width: 1000px;
+			margin: 48px 0 0;
 			box-sizing: border-box;
 			overflow-x: auto;
 		}

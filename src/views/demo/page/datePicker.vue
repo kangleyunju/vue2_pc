@@ -3,7 +3,7 @@
     <div class="pageTitle">日期间隔计算</div>
     <div class="searchBox">
       <el-date-picker v-model="dateArr" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" value-format="yyyy-MM-dd" @change="getDiff"/>
-      <div class="day" v-if="number>0">间隔天数<span>{{number}}</span>天</div>
+      <div class="day" v-if="dateArr">间隔天数<span>{{number}}</span>天</div>
     </div>
   </div>
 </template>

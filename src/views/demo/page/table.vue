@@ -1,16 +1,13 @@
 <template>
-  <div class="testContainer pageMain">
+  <div class="testContainer pageMain" v-loading="loading" element-loading-text="拼命加载中">
     <div class="pageTitle">el-table行列拖动</div>
     <div class="searchBox">
       <el-select v-model="value" placeholder="请选择" @change="change">
-        <el-option v-for="item in array" :key="item.value" :label="item.label" :value="item.value"></el-option>
+        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
       </el-select>
     </div>
     <div class="pageContent">
-      <el-table :data="tableData" border v-if="show" v-loading="loading" :row-class-name="rowClassName" :header-row-class-name="rowClassName">
-        <el-table-column prop="date" label="序号" width="60" type="index" align="center" fixed></el-table-column>
-        <el-table-column :prop="item.prop" :label="item.label" min-width="180" v-for="(item,index) in columnProp" :key="index"></el-table-column>
-      </el-table>
+      <myTable :tableColumns="tableColumns" :tableData="tableData" :showPage="false" :rowClassName="rowClassName" :headerRowClassName="rowClassName"/>
     </div>
   </div>
 </template>
@@ -19,8 +16,7 @@
   export default {
     data() {
       return {
-        show: true,
-        columnProp: [{
+        tableColumns: [{
           label: '姓名',
           prop: 'name'
         }, {
@@ -32,16 +28,14 @@
         }],
         tableData: [],
         value: '1',
-        array: [{
+        options: [{
           value: '1',
           label: '可以拖拽'
         }, {
           value: '2',
           label: '不可以拖拽'
         }],
-        el: null,
         loading: false,
-        aa: null,
         rowClassName: ''
       }
     },
@@ -84,7 +78,14 @@
           filter: '.noMove',
           handle: '.el-table__row',
           animation: 200,
-          onEnd: (e) => {}
+          onEnd: (e) => {
+            let tableData = this.deepCopy(this.tableData)
+            tableData.splice(e.oldIndex , 1, ...tableData.splice(e.newIndex, 1, tableData[e.oldIndex ]))
+            this.tableData = []
+            this.$nextTick(() => {
+              this.tableData = tableData
+            })
+          }
         })
       },
       //纵向拖动
@@ -97,11 +98,12 @@
           delay: 0,
           onEnd: (e) => {
             // 拖动列这里使用了深拷贝,否则排序会出错
-            let columnProp = this.deepCopy(this.columnProp)
-            columnProp.splice(e.oldIndex - 1, 1, ...columnProp.splice(e.newIndex - 1, 1, columnProp[e.oldIndex - 1]))
-            this.columnProp = []
+            let tableColumns = this.deepCopy(this.tableColumns)
+            //这里-1是因为前面有个序号
+            tableColumns.splice(e.oldIndex - 1, 1, ...tableColumns.splice(e.newIndex - 1, 1, tableColumns[e.oldIndex - 1]))
+            this.tableColumns = []
             this.$nextTick(() => {
-              this.columnProp = columnProp
+              this.tableColumns = tableColumns
             })
           }
         })

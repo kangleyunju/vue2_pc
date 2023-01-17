@@ -3,6 +3,8 @@ $--color-danger: #F56C6C;
 $--font-path: '~element-ui/lib/theme-chalk/fonts';
 @import "~element-ui/packages/theme-chalk/src/index";
 
+.el-pagination,
+.el-table,
 .el-tabs__header,
 .el-select *,
 .el-select-dropdown *{
@@ -19,7 +21,7 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
     box-shadow: none;
   }
 }
-
+// 弹窗
 .el-dialog{
 	border-radius: 8px;
 	.el-dialog__header{
@@ -56,6 +58,7 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 		}
 	}
 }
+//表格
 .el-table{
 	.el-table__header tr, .el-table__header th{
 		padding: 0;
@@ -65,10 +68,37 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 		background: #f4f7ff;
 	}
 }
+//分页
+.el-pagination{
+  text-align: center;
+  padding-top: 16px;
+  .btn-prev,.btn-next{
+    background-color: #f4f4f4;
+    padding: 0;
+    margin: 0 4px;
+    border-radius: 2px;
+  }
+  .btn-prev:disabled,.btn-next:disabled {
+    color: #C0C4CC;
+    background-color: #f4f4f4;
+  }
+  li{
+    background-color: #f4f4f4;
+    margin: 0 4px;
+    border-radius: 2px;
+    &.active{
+      color: #fff;
+      background-color: var(--color-primary);
+      background-color: var(--color-primary);
+    }
+  }
+}
+//input按钮
 .el-input-group__append {
 	border-color: var(--color-primary);
 	background-color: var(--color-primary);
 	&:hover{
+    border-color: var(--color-primary-light);
 		background-color: var(--color-primary-light);
 	}
 	.el-button {

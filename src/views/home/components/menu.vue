@@ -71,8 +71,10 @@
 <style lang="scss">
 	.menuContainer {
 		width: 200px;
-		border-right: solid 1px var(--borderColor);
+		border-right: solid 2px var(--borderColor);
+    border-right: 1px solid var(--borderColor);
 		box-shadow: 4px 0px 15px rgb(0 0 0 / 8%);
+    box-sizing: border-box;
 		position: fixed;
 		left: 0;
 		top: 0;
@@ -133,7 +135,7 @@
 		.el-submenu__title, .el-menu-item {
 			color: var(--textColor);
 			&:hover {
-				background-color: #333;
+				background-color: #252525;
 			}
 			&.is-active {
 				background-color: #666;

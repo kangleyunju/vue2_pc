@@ -31,20 +31,24 @@
 	#app {
 		--color-primary: #5275FB;
 		--color-primary-light: #7ca4fb;
-		--color-danger: #F56C6C;
+		--color-danger: #f53f3f;
 		--bgColor: #fff;
 		--textColor: #333;
 		--borderColor: #e6e6e6;
+    --hoverBg:#f2f2f2;
+    overflow: hidden;
 		&.dark {
 			--bgColor: #141414;
 			--textColor: #fff;
 			--borderColor: #141414;
+      --hoverBg:#252525;
 		}
 	}
 	body {
 		margin: 0;
 		padding: 0;
 		font-size: 14px;
+    overflow: hidden;
 	}
 	h1, h2, h3, h4, h5, h5, ul, li {
 		margin: 0;
@@ -74,6 +78,16 @@
 		align-items: center;
 		justify-content: center;
 	}
+  //页面进度条颜色
+  #nprogress{
+    .bar{
+      background: #5275FB !important;
+    }
+    .spinner-icon{
+      border-top-color:#5275FB !important;
+      border-left-color:#5275FB !important;
+    }
+  }
   //页面变灰
 	.grayscale {
 		-webkit-filter: grayscale(100%);

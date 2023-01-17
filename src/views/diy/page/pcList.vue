@@ -7,23 +7,15 @@
 			<el-button type="primary" @click="addItem">新建</el-button>
 		</div>
 		<div class="pageContent">
-			<el-table :data="list" border>
-				<el-table-column prop="id" label="ID" align="center" min-width="80" />
-				<el-table-column prop="name" label="名称" align="center" min-width="100" show-overflow-tooltip />
-				<el-table-column prop="title" label="页面标题" align="center" min-width="100" show-overflow-tooltip />
-				<el-table-column prop="path" label="页面路径" align="center" min-width="120" show-overflow-tooltip />
-				<el-table-column prop="createTime" label="创建时间" min-width="160" align="center" />
-				<el-table-column prop="editTime" label="编辑时间" min-width="160" align="center" />
-				<el-table-column prop="person" label="操作人员" min-width="100" align="center" />
-				<el-table-column fixed="right" label="操作" min-width="100" align="center">
-					<template slot-scope="scope">
+      <myTable :tableColumns="tableColumns" :tableData="list" :total="total" :pageNum="pageNum" :pageSize="pageSize" @change="pageChange">
+        <el-table-column slot="operation" fixed="right" label="操作" width="120">
+          <template slot-scope="scope">
 						<el-button type="text" size="small" @click="editItem(scope.row.id)">编辑</el-button>
 						<el-button type="text" size="small" class="delText" @click="delItem(scope.row.id,scope.$index)">删除</el-button>
-					</template>
-				</el-table-column>
-			</el-table>
+          </template>
+        </el-table-column>
+      </myTable>
 		</div>
-		<elPage @change="pageChange" :total="total" :page="page" :pageSize="pageSize" />
 	</div>
 </template>
 <script>
@@ -32,43 +24,89 @@
 			return {
 				keyword: '',
 				total: 0,
-				page: 1,
-				pageSize: 10,
+				pageNum: 1,
+				pageSize: 1,
 				list: [],
-				loading:false
+				loading: false,
+        tableColumns:[{
+          label:'名称',
+          prop:'name',
+          minWidth:160
+        },{
+          label:'页面标题',
+          prop:'title',
+          minWidth:160,
+          showTooltip:true
+        },{
+          label:'页面路径',
+          prop:'path',
+          minWidth:160
+        },{
+          label:'创建时间',
+          prop:'createTime',
+          minWidth:160
+        },{
+          label:'编辑时间',
+          prop:'editTime',
+          minWidth:160
+        },{
+          label:'操作人员',
+          prop:'person',
+          minWidth:160
+        },{
+            slot: 'operation'
+        }]
 			}
 		},
 		methods: {
 			getDiyList() {
-				this.loading=true
-				setTimeout(()=>{
-					this.list=[{
+				this.loading = true
+				setTimeout(() => {
+					let list = [{
 						id: 1,
-						name: "模板名称",
+						name: "模板名称1",
+						title: "页面标题",
+						path: "/index/index",
+						createTime: "2020-09-09 16:34:00",
+						editTime: "2020-09-09 16:34:00",
+						person: "小明"
+					},{
+						id: 2,
+						name: "模板名称2",
+						title: "页面标题页面标题页面标题页面标题",
+						path: "/index/index",
+						createTime: "2020-09-09 16:34:00",
+						editTime: "2020-09-09 16:34:00",
+						person: "小明2"
+					},{
+						id: 3,
+						name: "模板名称3",
 						title: "页面标题",
 						path: "/index/index",
 						createTime: "2020-09-09 16:34:00",
 						editTime: "2020-09-09 16:34:00",
 						person: "小明"
 					}]
-					this.total = this.list.length
-					this.loading=false
-				},1000)
+					this.total = list.length
+          this.list=list.filter((item,index)=>{return index<this.pageSize})
+					this.loading = false
+				}, 1000)
 			},
 			addItem() {
-				this.$router.push("/diy/pc?")
+				this.$router.push("/diy/phone?")
 			},
 			editItem(id) {
-				this.$router.push("/diy/pc?id=" + id)
+				this.$router.push("/diy/phone?id=" + id)
 			},
 			delItem(id, index) {
 				this.handleDelete().then(() => {
 					this.list.splice(index, 1)
-					this.getDiyList()
 				})
 			},
 			pageChange(e) {
-				console.log(e)
+        this.pageNum=e.pageNum
+        this.pageSize=e.pageSize
+        this.getDiyList()
 			}
 		},
 		created() {
