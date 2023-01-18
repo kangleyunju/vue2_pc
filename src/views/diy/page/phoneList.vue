@@ -25,7 +25,7 @@
 				keyword: '',
 				total: 0,
 				pageNum: 1,
-				pageSize: 1,
+				pageSize: 10,
 				list: [],
 				loading: false,
         tableColumns:[{

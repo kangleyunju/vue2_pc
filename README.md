@@ -20,8 +20,8 @@ vue2，elementui
 | --- | --- |
 | [vue2_pc](https://gitee.com/kangleyunju/vue2_pc) | [vue2_pc](https://github.com/kangleyunju/vue2_pc) |
 
-### 网址
-[在线预览地址](https://static-mp-2503170c-6f74-4217-ac1a-43133fb6d1b4.next.bspapp.com/vue2_pc/)
+### 预览地址
+https://static-mp-2503170c-6f74-4217-ac1a-43133fb6d1b4.next.bspapp.com/vue2_pc/
 
 ### 安装
 ```

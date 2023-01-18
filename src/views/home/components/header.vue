@@ -120,7 +120,7 @@
       }
       .el-breadcrumb{
         .el-breadcrumb__inner{
-          color: var(--textColor);
+          color: var(--textColor) !important;
         }
       }
     }

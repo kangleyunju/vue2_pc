@@ -138,7 +138,7 @@
 				background-color: #252525;
 			}
 			&.is-active {
-				background-color: #666;
+				background-color: #000;
 				color: var(--textColor);
 			}
 		}

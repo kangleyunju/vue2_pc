@@ -25,7 +25,7 @@
 				keyword: '',
 				total: 0,
 				pageNum: 1,
-				pageSize: 1,
+				pageSize: 10,
 				list: [],
 				loading: false,
         tableColumns:[{
@@ -93,10 +93,10 @@
 				}, 1000)
 			},
 			addItem() {
-				this.$router.push("/diy/phone?")
+				this.$router.push("/diy/pc")
 			},
 			editItem(id) {
-				this.$router.push("/diy/phone?id=" + id)
+				this.$router.push("/diy/pc?id=" + id)
 			},
 			delItem(id, index) {
 				this.handleDelete().then(() => {

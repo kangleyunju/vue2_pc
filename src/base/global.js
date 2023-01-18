@@ -2,15 +2,16 @@ import { mapState } from 'vuex'
 import sortable from 'vuedraggable' //拖拽
 import axios from 'axios'
 import VueCookies from 'vue-cookies'
+// 注册所有 svg 文件
 const requireAll = requireContext => requireContext.keys().map(requireContext)
 const req = require.context('@/assets/svg', false, /\.svg$/)
-requireAll(req); // 加载目录下的所有 svg 文件
+requireAll(req); 
 export default {
   data() {
     return {
       isApi: false,
       baseName: 'vue2_pc',
-      phoneUrl: "https://static-2503170c-6f74-4217-ac1a-43133fb6d1b4.bspapp.com/wap/#/pages/index/index"
+      phoneUrl: "https://static-mp-2503170c-6f74-4217-ac1a-43133fb6d1b4.next.bspapp.com/node_uni/#/pages/index/index"
     }
   },
   components: {
