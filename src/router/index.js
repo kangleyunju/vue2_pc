@@ -189,6 +189,13 @@ const routes = [{
     meta: {
       title: 'datePicker'
     }
+  },{
+    path: 'tree',
+    name: 'demoTree',
+    component: () => import('@/views/demo/page/tree.vue'),
+    meta: {
+      title: 'tree'
+    }
   }]
 }, {
   path: "/system",
