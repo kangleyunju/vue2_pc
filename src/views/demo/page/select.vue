@@ -52,7 +52,7 @@
     },
     mounted() {
       for (let i = 1; i <= 100; i++) {
-        this.list.push({ label: '张三' + i, id: '张三' + i })
+        this.list.push({ label: '张三' + i, id: i })
       }
       this.getList()
     }
