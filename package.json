@@ -1,7 +1,7 @@
 {
 	"name": "vue2_pc",
 	"version": "1.2.0",
-  "homepage": "https://kangleyunju.github.io/vue2_pc",
+  "homepage": "https://kangleyunju.github.io/vue2_pc/",
 	"private": true,
 	"scripts": {
 		"build": "vue-cli-service build",
