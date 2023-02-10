@@ -1,7 +1,7 @@
 <template>
 	<div class="loginContainer" v-loading="loading" :style="{'backgroundImage': 'url(' + bgImg + ')'}">
 		<div class="formBox" v-if="state==1">	
-			<h1>后台登录</h1>
+			<h1>后台登录哈哈</h1>
 			<el-form ref="form" :model="form" :rules="rules" class="loginBox">
 				<el-form-item label="账号" prop="account">
 					<el-input placeholder="请输入账号" maxlength="10" type="text" clearable v-model="form.account" @input="handleInput" />
