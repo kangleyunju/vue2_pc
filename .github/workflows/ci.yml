@@ -23,5 +23,5 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.VUE2_PC }} # VUE_ADMIN_TEMPLATE 是我的 secret 名称，需要替换成你的
           BRANCH: main
           FOLDER: dist
-          REPOSITORY_NAME: kangleyunju/kangleyunju.github.io # 这是我的 github page 仓库
+          REPOSITORY_NAME: kangleyunju/vue2_pc # 这是我的 github page 仓库
           TARGET_FOLDER: vue2_pc # 打包的文件将放到静态服务器 vue2_pc 目录下
