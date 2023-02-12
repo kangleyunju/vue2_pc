@@ -20,8 +20,8 @@ jobs:
       - name: Deploy # 将打包内容发布到 github page
         uses: JamesIves/github-pages-deploy-action@3.7.1 # 使用别人写好的 actions
         with:  # 自定义环境变量
-          ACCESS_TOKEN: ${{ secrets.VUE2_PC }} # VUE_ADMIN_TEMPLATE 是我的 secret 名称，需要替换成你的
+          ACCESS_TOKEN: ${{ secrets.VUE2_PC }} # secrets.VUE2_PC 是我的 secret 名称，需要替换成你的
           BRANCH: vue2_pc
           FOLDER: dist
           REPOSITORY_NAME: kangleyunju/vue2_pc # 这是我的 github page 仓库
-          TARGET_FOLDER: / # 打包的文件将放到静态服务器 vue2_pc 目录下
+          TARGET_FOLDER: / # 打包的文件将放到静态服务器 / 目录下

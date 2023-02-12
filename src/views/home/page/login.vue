@@ -1,7 +1,7 @@
 <template>
 	<div class="loginContainer" v-loading="loading" :style="{'backgroundImage': 'url(' + bgImg + ')'}">
-		<div class="formBox" v-if="state==1">	
-			<h1>后台登录哈哈</h1>
+		<div class="formBox" v-if="state==1">
+			<h1>后台登录</h1>
 			<el-form ref="form" :model="form" :rules="rules" class="loginBox">
 				<el-form-item label="账号" prop="account">
 					<el-input placeholder="请输入账号" maxlength="10" type="text" clearable v-model="form.account" @input="handleInput" />
@@ -21,7 +21,7 @@
 					<el-input placeholder="请输入账号" maxlength="20" type="text" clearable v-model="form.account" @input="handleInput" />
 				</el-form-item>
 				<el-form-item label="密码" prop="password">
-					<el-input placeholder="请输入密码" maxlength="20" type="password" v-model="form.password" show-password/>
+					<el-input placeholder="请输入密码" maxlength="20" type="password" v-model="form.password" show-password />
 				</el-form-item>
 			</el-form>
 			<el-button type="primary" @click="toLogin(2)" class="btn">注册</el-button>
@@ -43,15 +43,15 @@
 					account: [{ required: true, message: '请输入账号 5-10位数字', trigger: 'blur' }, { min: 5, max: 10, message: '账号长度在 5 到 10 个字符', trigger: 'blur' }],
 					password: [{ required: true, message: '请输入密码 数字或字母', trigger: 'blur' }, { min: 4, max: 12, message: '密码长度在 4 到 12 个字符', trigger: 'blur' }]
 				},
-				loading:false,
-				bgImg:''
+				loading: false,
+				bgImg: ''
 			}
 		},
-		watch:{
-			state(){
-				this.form={
-					account:'',
-					password:''
+		watch: {
+			state() {
+				this.form = {
+					account: '',
+					password: ''
 				}
 			}
 		},
@@ -62,7 +62,7 @@
 			toLogin(e) {
 				this.$refs.form.validate((valid) => {
 					if (valid) {
-						this.loading=true
+						this.loading = true
 						this.request({
 							baseURL: 'https://api.uomg.com/api',
 							url: 'qq.info',
@@ -76,29 +76,29 @@
 									avatar: res.qlogo,
 									account: this.form.account,
 									password: this.form.password,
-									sex:3,
-									desc:''
+									sex: 3,
+									desc: ''
 								}
 								this.setStorage('userInfo', userInfo)
-								this.$store.commit('edit',{name:'userInfo',val:userInfo})
-								this.$cookies.set('token',this.createToken(),60*60*24 )
-								this.$message.success(e==1?'登录成功':'注册成功')
+								this.$store.commit('edit', { name: 'userInfo', val: userInfo })
+								this.$cookies.set('token', this.createToken(), 60 * 60 * 24)
+								this.$message.success(e == 1 ? '登录成功' : '注册成功')
 								this.$router.push('/')
 							} else {
-								this.$message.error(e==1?'账号或密码错误':'账号已存在')
+								this.$message.error(e == 1 ? '账号或密码错误' : '账号已存在')
 							}
-							this.loading=false
+							this.loading = false
 						})
 					}
 				})
 			},
 			//背景图
-			getBg(){
+			getBg() {
 				this.request({
 					baseURL: 'https://api.uomg.com',
 					url: 'api/image.lofter',
 				}).then(res => {
-					this.bgImg=res.data[Math.floor(Math.random()*res.data.length)]
+					this.bgImg = res.data[Math.floor(Math.random() * res.data.length)]
 				})
 			}
 		},
@@ -119,7 +119,7 @@
 		background-color: #f8f8f8;
 		.formBox {
 			width: 300px;
-      color:var(--textColor);
+			color: var(--textColor);
 			background-color: var(--bgColor);
 			padding: 20px 40px 20px;
 			border-radius: 4px;
@@ -133,7 +133,7 @@
 			.el-form {
 				.el-form-item__label {
 					line-height: 30px;
-          color:var(--textColor);
+					color: var(--textColor);
 				}
 				.el-form-item {
 					margin-bottom: 18px;
