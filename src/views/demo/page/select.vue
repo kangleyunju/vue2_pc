@@ -19,7 +19,7 @@
         list: [], //总数组
         options: [], //分页数组
         loading: false,
-        keyword: ''
+        keyword: ''//搜索关键字
       }
     },
     methods: {
@@ -52,7 +52,7 @@
     },
     mounted() {
       for (let i = 1; i <= 100; i++) {
-        this.list.push({ label: '张三' + i, id: i })
+        this.list.push({ label: '张三' + i, id: i+1000 })
       }
       this.getList()
     }

@@ -147,4 +147,7 @@
 		scrollbar-color: #d7d7d7 #f2f2f2; //滑块颜色  滚动条背景颜色
 		scrollbar-width: thin; // 滚动条宽度有三种：thin、auto、none
 	}
+  .clearImg{
+    image-rendering: -webkit-optimize-contrast;
+  }
 </style>

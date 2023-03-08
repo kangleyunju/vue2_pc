@@ -270,6 +270,12 @@ export default {
       minute = minute > 9 ? minute : '0' + minute
       second = second > 9 ? second : '0' + second
       return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second
+    },
+    //16进制转rgba
+    hexToRgba(hex, opacity = 0.1) {
+      return (
+        'rgba(' + parseInt('0x' + hex.slice(1, 3)) + ',' + parseInt('0x' + hex.slice(3, 5)) + ',' +parseInt('0x' + hex.slice(5, 7)) +',' +opacity +')'
+      )
     }
   }
 }
