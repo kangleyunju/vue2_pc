@@ -78,7 +78,7 @@
 </template>
 <script>
 	import screenfull from "screenfull"
-	import compList from "@/views/diy/utils/diy.js"
+	import compList from "@/views/diy/mixin/diy.js"
 	import diyRight from "@/views/diy/components/diyRight.vue"
 	export default {
 		components: {

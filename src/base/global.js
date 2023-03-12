@@ -5,7 +5,7 @@ import VueCookies from 'vue-cookies'
 // 注册所有 svg 文件
 const requireAll = requireContext => requireContext.keys().map(requireContext)
 const req = require.context('@/assets/svg', false, /\.svg$/)
-requireAll(req); 
+requireAll(req);
 export default {
   data() {
     return {
@@ -273,9 +273,19 @@ export default {
     },
     //16进制转rgba
     hexToRgba(hex, opacity = 0.1) {
-      return (
-        'rgba(' + parseInt('0x' + hex.slice(1, 3)) + ',' + parseInt('0x' + hex.slice(3, 5)) + ',' +parseInt('0x' + hex.slice(5, 7)) +',' +opacity +')'
-      )
+      return ('rgba(' + parseInt('0x' + hex.slice(1, 3)) + ',' + parseInt('0x' + hex.slice(3, 5)) + ',' + parseInt('0x' + hex.slice(5, 7)) + ',' + opacity + ')')
+    },
+    //车牌号验证方法
+    isVehicleNumber(number) {
+      var xreg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}(([0-9]{5}[DF]$)|([DF][A-HJ-NP-Z0-9][0-9]{4}$))/;
+      var creg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳]{1}$/;
+      if (number.length == 7) {
+        return creg.test(number)
+      } else if (number.length == 8) {
+        return xreg.test(number)
+      } else {
+        return false
+      }
     }
   }
 }
