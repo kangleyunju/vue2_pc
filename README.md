@@ -25,18 +25,17 @@ https://static-mp-2503170c-6f74-4217-ac1a-43133fb6d1b4.next.bspapp.com/vue2_pc/
 
 https://kangleyunju.github.io/vue2_pc/
 
-### 安装
+### 步骤
+* 安装
 ```
 npm install
 ```
-
-### 启动
+* 启动
 ```
 npm run serve
 npm run dev
 ```
-
-### 打包
+* 打包
 ```
 npm run build
 ```
