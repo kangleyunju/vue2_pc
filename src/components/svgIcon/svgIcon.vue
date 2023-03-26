@@ -20,7 +20,7 @@
 				return `#icon-${this.iconClass}`
 			},
 			svgClass() {
-				return this.className?`'svg-icon '${this.className}`:'svg-icon'
+				return this.className ? `'svg-icon '${this.className}` : 'svg-icon'
 			}
 		}
 	};
@@ -30,7 +30,6 @@
 		width: 24px;
 		height: 24px;
 		fill: currentColor;
-		stroke: currentColor;
 		overflow: hidden;
 	}
 </style>

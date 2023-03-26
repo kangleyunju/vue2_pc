@@ -1,7 +1,7 @@
 {
 	"name": "vue2_pc",
-	"version": "1.3.0",
-  "homepage": "https://kangleyunju.github.io/vue2_pc/",
+	"version": "1.3.1",
+	"homepage": "https://kangleyunju.github.io/vue2_pc/",
 	"private": true,
 	"scripts": {
 		"build": "vue-cli-service build",
@@ -13,7 +13,7 @@
 		"@wangeditor/editor-for-vue": "^1.0.2",
 		"axios": "^0.27.2",
 		"default-passive-events": "^2.0.0",
-		"echarts": "^5.4.1",
+		"echarts": "^5.4.2",
 		"echarts-gl": "^2.0.9",
 		"element-ui": "^2.15.6",
 		"html2canvas": "^1.4.1",
@@ -40,9 +40,5 @@
 		"svg-sprite-loader": "^6.0.11",
 		"vue-template-compiler": "^2.6.14"
 	},
-	"browserslist": [
-		"> 1%",
-		"last 2 versions",
-		"not dead"
-	]
+	"browserslist": ["> 1%", "last 2 versions", "not dead"]
 }

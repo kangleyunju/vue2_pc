@@ -34,8 +34,9 @@ module.exports = defineConfig({
 	}, //调整内部的 webpack 配置
 	transpileDependencies: true,
 	devServer: {
-		open: false,
+		open: true,
 		port: 8200,
+		host: 'localhost',
 		proxy: {
 			'/pro': {
 				target: 'https://www.baidu.com',
