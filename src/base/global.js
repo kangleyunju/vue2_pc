@@ -182,7 +182,7 @@ export default {
     createToken(max = 10) {
       let token = ''
       for (let i = 1; i <= max; i++) {
-        const n = Math.floor(Math.random() * 16.0).toString(16)
+        const n = Math.floor(Math.random() * 16).toString(16)
         token += n
       }
       return token
