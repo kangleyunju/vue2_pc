@@ -275,7 +275,12 @@ router.beforeEach((to, from, next) => {
 		if (to.path == '/login') {
 			next()
 		} else {
-			next('/login')
+      if(from.path=='/login') {
+        nprogress.done()
+        next('/login')
+      }else{
+        next('/login')
+      }
 		}
 	}
 })
