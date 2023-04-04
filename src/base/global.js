@@ -11,7 +11,7 @@ export default {
 		return {
 			isApi: false,
 			baseName: 'vue2_pc',
-			phoneUrl: "http://localhost:9000/node_uni/#/pages/index/index"
+			phoneUrl: "https://static-mp-2503170c-6f74-4217-ac1a-43133fb6d1b4.next.bspapp.com/node_uni/#/pages/index/index"
 		}
 	},
 	components: {
