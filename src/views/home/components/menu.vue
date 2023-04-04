@@ -109,6 +109,11 @@
 			width: 100% !important;
 			transition: all 0.1s;
 			background-color: transparent;
+      .el-menu-item {
+        &:hover {
+        	background-color: var(--hoverBg);
+        }
+      }
 			.el-submenu {
 				&.is-active{
 					.el-submenu__title{
@@ -121,12 +126,18 @@
 				.el-submenu__title {
 					display: flex;
 					align-items: center;
+          &:hover {
+          	background-color: var(--hoverBg);
+          }
 				}
 				.el-submenu__icon-arrow {
 					margin-top: -5px;
 				}
 				.el-menu-item {
 					padding-left: 50px !important;
+          &:hover {
+          	background-color: var(--hoverBg);
+          }
 				}
 			}
 		}
@@ -134,9 +145,6 @@
 	.dark {
 		.el-submenu__title, .el-menu-item {
 			color: var(--textColor);
-			&:hover {
-				background-color: #252525;
-			}
 			&.is-active {
 				background-color: #000;
 				color: var(--textColor);

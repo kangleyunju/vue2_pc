@@ -46,13 +46,11 @@ for (let index in rich) {
 }
 export const gdp = {
 	id: 'gdp',
-	backgroundColor: '#ffffff',
 	title: {
 		text: '近60年各国GDP（Top10）',
 		left: 'center',
 		top: '5%',
 		textStyle: {
-			color: '#333333',
 			fontSize: 20,
 			fontFamily: '微软雅黑'
 		}
@@ -64,7 +62,7 @@ export const gdp = {
 	graphic: {
 		elements: [{
 			type: 'text',
-			right: 160,
+			right: 40,
 			bottom: 80,
 			style: {
 				text: 1960,

@@ -79,6 +79,7 @@
 									sex: 3,
 									desc: ''
 								}
+                console.log(userInfo)
 								this.setStorage('userInfo', userInfo)
 								this.$store.commit('edit', { name: 'userInfo', val: userInfo })
 								this.$cookies.set('token', this.createToken(), 60 * 60 * 24)

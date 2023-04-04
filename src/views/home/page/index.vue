@@ -66,9 +66,6 @@
 				let tmp = festAndTerm.join('')
 				return tmp == '' ? lunarMD : festAndTerm.filter(val => val != '').join('/')
 			}
-		},
-		created() {
-
 		}
 	}
 </script>
@@ -76,7 +73,6 @@
 	.dayContainer {
 		position: relative;
     .bgImg{
-      // filter: blur(1px);
       height: 100%;
       width: 100%;
       position: absolute;

@@ -1,5 +1,5 @@
 <template>
-	<div class="layoutContainer" :class="{'collapse':isCollapse}">
+	<div class="layoutContainer" :class="{'collapse':isCollapse,dark:isNight}">
 		<Menu/>
 		<Header/>
 		<div class="viewBox">
@@ -36,6 +36,9 @@
 		transition: all 0.3s;
 		height: 100vh;
 		background-color: #eee;
+    &.dark{
+      background-color: #000;
+    }
 		&.collapse{
 			padding-left: 64px;
 		}

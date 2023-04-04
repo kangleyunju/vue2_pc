@@ -19,6 +19,7 @@
           <i class="el-icon-arrow-down"></i>
         </div>
         <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="0">github源码</el-dropdown-item>
           <el-dropdown-item command="1">个人中心</el-dropdown-item>
           <el-dropdown-item command="2">系统设置</el-dropdown-item>
           <el-dropdown-item command="3">退出登录</el-dropdown-item>
@@ -60,7 +61,9 @@
         localStorage.setItem('isNight', this.isNight ? 1 : 0)
       },
       handleCommand(e) {
-        if (e == 1) {
+        if(e==0){
+          window.open('https://github.com/kangleyunju/vue2_pc')
+        }else  if (e == 1) {
           this.$router.push('/user/info')
         } else if (e == 2) {
           this.$router.push('/system/set')

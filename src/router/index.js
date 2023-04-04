@@ -145,23 +145,15 @@ const routes = [{
 		meta: {
 			title: '腾讯地图'
 		}
-	}]
-}, {
-	path: "/user",
-	component: layout,
-	meta: {
-		title: '用户',
-		icon: 'el-icon-user-solid'
-	},
-	children: [{
-		path: 'info',
-		name: 'userInfo',
-		component: () => import('@/views/user/page/info.vue'),
+	},{
+		path: 'poster',
+		name: 'toolPoster',
+		component: () => import('@/views/tool/page/poster'),
 		meta: {
-			title: '个人中心'
+			title: '海报生成器'
 		}
 	}]
-}, {
+},  {
 	path: "/demo",
 	component: layout,
 	meta: {
@@ -205,6 +197,21 @@ const routes = [{
 		}
 	}]
 }, {
+	path: "/user",
+	component: layout,
+	meta: {
+		title: '用户',
+		icon: 'el-icon-user-solid'
+	},
+	children: [{
+		path: 'info',
+		name: 'userInfo',
+		component: () => import('@/views/user/page/info.vue'),
+		meta: {
+			title: '个人中心'
+		}
+	}]
+},{
 	path: "/system",
 	component: layout,
 	meta: {
@@ -225,13 +232,6 @@ const routes = [{
 	component: () => import('@/views/home/page/login.vue'),
 	meta: {
 		title: '登录'
-	}
-}, {
-	path: '/demo',
-	name: 'demo',
-	component: () => import('@/views/home/page/demo.vue'),
-	meta: {
-		title: '测试'
 	}
 }, {
 	path: '/diy/phone',

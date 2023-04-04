@@ -5,15 +5,16 @@ export const shipin = {
 		left: 'center',
 		top: '5%',
 		textStyle: {
-			color: '#333333',
 			fontSize: 20,
 			fontFamily: '微软雅黑'
 		}
 	},
 	legend: {
 		orient: 'vertical',
-		left: 'left',
-		show: true
+		left: 10,
+		top:10,
+		show: true,
+    color:'#fa0'
 	},
 	tooltip: {
 		trigger: 'item'
@@ -21,8 +22,8 @@ export const shipin = {
 	series: [{
 		name: '用户数',
 		type: 'pie',
-		radius: [50, 120],
-		center: ['50%', '50%'],
+		radius: [50, 100],
+		center: ['50%', '60%'],
 		roseType: 'area',
 		itemStyle: {
 			borderRadius: 8

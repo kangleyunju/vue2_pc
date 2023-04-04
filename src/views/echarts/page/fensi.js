@@ -5,7 +5,6 @@ export const fensi = {
 		left: 'center',
 		top: '5%',
 		textStyle: {
-			color: '#333333',
 			fontSize: 20,
 			fontFamily: '微软雅黑'
 		}
@@ -19,7 +18,8 @@ export const fensi = {
 		orient: 'vertical',
 		left: 'left',
 		show: true,
-		bottom: '10%'
+		left: 10,
+		bottom:10,
 	},
 	series: [{
 		name: '人数',

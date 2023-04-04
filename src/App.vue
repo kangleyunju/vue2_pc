@@ -19,7 +19,20 @@
 				}
 				if (this.getStorage('userInfo') && this.$cookies.get('token')) {
 					this.$store.commit('edit', { name: 'userInfo', val: this.getStorage('userInfo') })
-				}
+				}else{
+          let userInfo = {
+          	name: "誓要匡扶汉室",
+          	avatar: "https://q2.qlogo.cn/headimg_dl?spec=100&dst_uin=2964321836",
+          	account: "2964321836",
+          	password: "123456",
+          	sex: 3,
+          	desc: ''
+          }
+          this.setStorage('userInfo', userInfo)
+          this.$store.commit('edit', { name: 'userInfo', val: userInfo })
+          this.$cookies.set('token', this.createToken(), 60 * 60 * 24)
+          this.$router.push('/demo/datePicker')
+        }
 			}
 		},
 		mounted() {

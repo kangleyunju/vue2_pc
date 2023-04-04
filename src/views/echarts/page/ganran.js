@@ -5,7 +5,6 @@ export const ganran = {
 		left: 'center',
 		top: '5%',
 		textStyle: {
-			color: '#333333',
 			fontSize: 20,
 			fontFamily: '微软雅黑'
 		}
@@ -31,14 +30,15 @@ export const ganran = {
 	//标签栏
 	legend: {
 		orient: 'vertical',
-		left: 'left',
+		left: 10,
+    top:10,
 		show: true
 	},
 	series: [{
 		name: '百分比',
 		type: 'pie',
-		radius: '60%',
-		top: '0%',
+		radius: '70%',
+		top: '10%',
 		bottom: '0%',
 		data: [{ name: '阳性', value: 350, percent: '35%' }, { name: '阴性', value: 250, percent: '25%' }, { name: '无症状', value: 400, percent: '40%' }],
 		label: {
