@@ -46,9 +46,13 @@
 				let arr = JSON.parse(JSON.stringify(this.$router.options.routes))
 				for (let i = arr.length - 1; i >= 0; i--) {
 					if (arr[i].children) {
-						for (let j in arr[i].children) {
-							arr[i].children[j].path = arr[i].path + '/' + arr[i].children[j].path
-						}
+            for (let j=menuList[i].children.length-1;j>=0;j-- ) {
+              menuList[i].children[j].path = menuList[i].path + '/' + menuList[i].children[j].path
+              //隐藏hide的目录
+              if(menuList[i].children[j].meta.hide){
+                menuList[i].children.splice(j, 1)
+              }
+            }
 						if (arr[i].children.length == 1) {
 							arr[i].component = arr[i].children[0].component
 							arr[i].path = arr[i].children[0].path
