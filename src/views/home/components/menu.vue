@@ -46,13 +46,13 @@
 				let arr = JSON.parse(JSON.stringify(this.$router.options.routes))
 				for (let i = arr.length - 1; i >= 0; i--) {
 					if (arr[i].children) {
-            for (let j=menuList[i].children.length-1;j>=0;j-- ) {
-              menuList[i].children[j].path = menuList[i].path + '/' + menuList[i].children[j].path
-              //隐藏hide的目录
-              if(menuList[i].children[j].meta.hide){
-                menuList[i].children.splice(j, 1)
-              }
-            }
+						for (let j = arr[i].children.length - 1; j >= 0; j--) {
+							arr[i].children[j].path = arr[i].path + '/' + arr[i].children[j].path
+							//隐藏hide的目录
+							if (arr[i].children[j].meta.hide) {
+								arr[i].children.splice(j, 1)
+							}
+						}
 						if (arr[i].children.length == 1) {
 							arr[i].component = arr[i].children[0].component
 							arr[i].path = arr[i].children[0].path
@@ -76,9 +76,9 @@
 	.menuContainer {
 		width: 200px;
 		border-right: solid 2px var(--borderColor);
-    border-right: 1px solid var(--borderColor);
+		border-right: 1px solid var(--borderColor);
 		box-shadow: 4px 0px 15px rgb(0 0 0 / 8%);
-    box-sizing: border-box;
+		box-sizing: border-box;
 		position: fixed;
 		left: 0;
 		top: 0;
@@ -113,16 +113,16 @@
 			width: 100% !important;
 			transition: all 0.1s;
 			background-color: transparent;
-      .el-menu-item {
-        &:hover {
-        	background-color: var(--hoverBg);
-        }
-      }
+			.el-menu-item {
+				&:hover {
+					background-color: var(--hoverBg);
+				}
+			}
 			.el-submenu {
-				&.is-active{
-					.el-submenu__title{
+				&.is-active {
+					.el-submenu__title {
 						color: var(--color-primary);
-						i{
+						i {
 							color: var(--color-primary);
 						}
 					}
@@ -130,18 +130,18 @@
 				.el-submenu__title {
 					display: flex;
 					align-items: center;
-          &:hover {
-          	background-color: var(--hoverBg);
-          }
+					&:hover {
+						background-color: var(--hoverBg);
+					}
 				}
 				.el-submenu__icon-arrow {
 					margin-top: -5px;
 				}
 				.el-menu-item {
 					padding-left: 50px !important;
-          &:hover {
-          	background-color: var(--hoverBg);
-          }
+					&:hover {
+						background-color: var(--hoverBg);
+					}
 				}
 			}
 		}
