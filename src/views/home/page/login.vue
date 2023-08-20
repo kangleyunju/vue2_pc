@@ -70,16 +70,16 @@
 								qq: this.form.account
 							}
 						}).then(res => {
-							if (res.name && res.name.trim() != '') {
+							if (res.qlogo) {
 								let userInfo = {
-									name: res.name,
+									name: res.name || '无名',
 									avatar: res.qlogo,
 									account: this.form.account,
 									password: this.form.password,
 									sex: 3,
 									desc: ''
 								}
-                console.log(userInfo)
+								console.log(userInfo)
 								this.setStorage('userInfo', userInfo)
 								this.$store.commit('edit', { name: 'userInfo', val: userInfo })
 								this.$cookies.set('token', this.createToken(), 60 * 60 * 24)
@@ -96,10 +96,10 @@
 			//背景图
 			getBg() {
 				this.request({
-					baseURL: 'https://api.uomg.com',
-					url: 'api/image.lofter',
+					baseURL: 'https://api.vvhan.com',
+					url: 'api/view?type=json',
 				}).then(res => {
-					this.bgImg = res.data[Math.floor(Math.random() * res.data.length)]
+					this.bgImg = res.imgurl
 				})
 			}
 		},

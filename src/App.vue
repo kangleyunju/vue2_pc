@@ -19,20 +19,7 @@
 				}
 				if (this.getStorage('userInfo') && this.$cookies.get('token')) {
 					this.$store.commit('edit', { name: 'userInfo', val: this.getStorage('userInfo') })
-				}else{
-          let userInfo = {
-          	name: "誓要匡扶汉室",
-          	avatar: "https://q2.qlogo.cn/headimg_dl?spec=100&dst_uin=2964321836",
-          	account: "2964321836",
-          	password: "123456",
-          	sex: 3,
-          	desc: ''
-          }
-          this.setStorage('userInfo', userInfo)
-          this.$store.commit('edit', { name: 'userInfo', val: userInfo })
-          this.$cookies.set('token', this.createToken(), 60 * 60 * 24)
-          this.$router.push('/demo/datePicker')
-        }
+				}
 			}
 		},
 		mounted() {
@@ -48,20 +35,20 @@
 		--bgColor: #fff;
 		--textColor: #333;
 		--borderColor: #e6e6e6;
-    --hoverBg:#f2f2f2;
-    overflow: hidden;
+		--hoverBg: #f2f2f2;
+		overflow: hidden;
 		&.dark {
 			--bgColor: #141414;
 			--textColor: #fff;
 			--borderColor: #141414;
-      --hoverBg:#252525;
+			--hoverBg: #252525;
 		}
 	}
 	body {
 		margin: 0;
 		padding: 0;
 		font-size: 14px;
-    overflow: hidden;
+		overflow: hidden;
 	}
 	h1, h2, h3, h4, h5, h5, ul, li {
 		margin: 0;
@@ -91,17 +78,17 @@
 		align-items: center;
 		justify-content: center;
 	}
-  //页面进度条颜色
-  #nprogress{
-    .bar{
-      background: #5275FB !important;
-    }
-    .spinner-icon{
-      border-top-color:#5275FB !important;
-      border-left-color:#5275FB !important;
-    }
-  }
-  //页面变灰
+	//页面进度条颜色
+	#nprogress {
+		.bar {
+			background: #5275FB !important;
+		}
+		.spinner-icon {
+			border-top-color: #5275FB !important;
+			border-left-color: #5275FB !important;
+		}
+	}
+	//页面变灰
 	.grayscale {
 		-webkit-filter: grayscale(100%);
 		-moz-filter: grayscale(100%);
@@ -160,8 +147,8 @@
 		scrollbar-color: #d7d7d7 #f2f2f2; //滑块颜色  滚动条背景颜色
 		scrollbar-width: thin; // 滚动条宽度有三种：thin、auto、none
 	}
-  //使图片清晰
-  .clearImg{
-    image-rendering: -webkit-optimize-contrast;
-  }
+	//使图片清晰
+	.clearImg {
+		image-rendering: -webkit-optimize-contrast;
+	}
 </style>

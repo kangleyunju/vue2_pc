@@ -82,6 +82,21 @@ const routes = [{
 		}
 	}]
 }, {
+	path: "/draw",
+	component: layout,
+	meta: {
+		title: '画板',
+		icon: 'el-icon-s-open'
+	},
+	children: [{
+		path: 'index',
+		name: 'drawIndex',
+		component: () => import('@/views/draw/page/index.vue'),
+		meta: {
+			title: '画板'
+		}
+	}]
+}, {
 	path: "/echarts",
 	component: layout,
 	meta: {
@@ -145,7 +160,7 @@ const routes = [{
 		meta: {
 			title: '腾讯地图'
 		}
-	},{
+	}, {
 		path: 'poster',
 		name: 'toolPoster',
 		component: () => import('@/views/tool/page/poster'),
@@ -153,7 +168,7 @@ const routes = [{
 			title: '海报生成器'
 		}
 	}]
-},  {
+}, {
 	path: "/demo",
 	component: layout,
 	meta: {
@@ -211,7 +226,7 @@ const routes = [{
 			title: '个人中心'
 		}
 	}]
-},{
+}, {
 	path: "/system",
 	component: layout,
 	meta: {
@@ -275,12 +290,12 @@ router.beforeEach((to, from, next) => {
 		if (to.path == '/login') {
 			next()
 		} else {
-      if(from.path=='/login') {
-        nprogress.done()
-        next('/login')
-      }else{
-        next('/login')
-      }
+			if (from.path == '/login') {
+				nprogress.done()
+				next('/login')
+			} else {
+				next('/login')
+			}
 		}
 	}
 })
