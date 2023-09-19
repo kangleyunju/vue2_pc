@@ -31,7 +31,9 @@
 	#app {
 		--color-primary: #5275FB;
 		--color-primary-light: #7ca4fb;
-		--color-danger: #f53f3f;
+		--redColor: #f53f3f;
+		--blackColor: #333333;
+		--grayColor: #d8d8d8;
 		--bgColor: #fff;
 		--textColor: #333;
 		--borderColor: #e6e6e6;

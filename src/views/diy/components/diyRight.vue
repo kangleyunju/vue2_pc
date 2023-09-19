@@ -14,10 +14,10 @@
 					<el-input v-model="pageInfo.path" placeholder="请输入页面路径" maxlength="20" clearable />
 				</el-form-item>
 				<el-form-item label="背景颜色">
-          <div style="display: flex;align-items: center;">
-            <el-color-picker v-model="pageInfo.background_color" />
-            <span style="margin-left:12px">{{pageInfo.background_color}}</span>
-          </div>
+					<div style="display: flex;align-items: center;">
+						<el-color-picker v-model="pageInfo.background_color" />
+						<span style="margin-left:12px">{{pageInfo.background_color}}</span>
+					</div>
 				</el-form-item>
 			</el-form>
 		</div>
@@ -666,7 +666,7 @@
 						font-size: 20px;
 						cursor: pointer;
 						&:hover {
-							color: var(--color-danger);
+							color: var(--redColor);
 						}
 					}
 				}
@@ -794,7 +794,7 @@
 									transform: scale(0.9);
 								}
 								div:nth-child(2) {
-									color: var(--color-danger);
+									color: var(--redColor);
 								}
 							}
 						}
@@ -803,7 +803,7 @@
 							font-size: 16px;
 							cursor: pointer;
 							&:hover {
-								color: var(--color-danger);
+								color: var(--redColor);
 							}
 						}
 					}
@@ -965,7 +965,7 @@
 									transform: scale(0.9);
 								}
 								div:nth-child(2) {
-									color: var(--color-danger);
+									color: var(--redColor);
 								}
 							}
 							.check {

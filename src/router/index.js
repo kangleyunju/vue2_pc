@@ -197,6 +197,13 @@ const routes = [{
 			title: 'table'
 		}
 	}, {
+		path: 'table2',
+		name: 'demoTable2',
+		component: () => import('@/views/demo/page/table2.vue'),
+		meta: {
+			title: 'table2'
+		}
+	}, {
 		path: 'datePicker',
 		name: 'demoDatePicker',
 		component: () => import('@/views/demo/page/datePicker.vue'),

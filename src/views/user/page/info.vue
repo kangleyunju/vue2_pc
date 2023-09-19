@@ -9,7 +9,7 @@
 					</el-upload>
 				</el-form-item>
 				<el-form-item label="账号" prop="account">
-					<el-input v-model="form.account" disabled v-copy="form.account"/>
+					<el-input v-model="form.account" disabled v-copy="form.account" />
 				</el-form-item>
 				<el-form-item label="密码" prop="password">
 					<el-input v-model="form.password" type="password" autocomplete="off" show-password maxlength="12" />
@@ -24,8 +24,8 @@
 						<el-radio :label="3" border>保密</el-radio>
 					</el-radio-group>
 				</el-form-item>
-				<el-form-item label="个人介绍" prop="desc">
-					<el-input v-model="form.desc" type="textarea" placeholder="请输入个人介绍" maxlength="100" height show-word-limit :autosize="{ minRows: 4, maxRows: 8 }" />
+				<el-form-item label="签名" prop="desc">
+					<el-input v-model="form.desc" type="textarea" placeholder="请输入签名" maxlength="100" height show-word-limit :autosize="{ minRows: 4, maxRows: 8 }" />
 				</el-form-item>
 			</el-form>
 			<div class="btnLine">
