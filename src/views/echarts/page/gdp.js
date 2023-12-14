@@ -40,7 +40,7 @@ for (let index in rich) {
 		height: 27,
 		width: 40,
 		backgroundColor: {
-			image: require(`@/assets/countryPng/${index}.png`)
+			image: require(`@/assets/home/face.png`)
 		}
 	}
 }

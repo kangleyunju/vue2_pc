@@ -36,9 +36,6 @@
 				}, {
 					name: '第二个视频的名称',
 					url: 'http://vd3.bdstatic.com/mda-mmwfyjruzeuwe38n/360p/h264/1640949405327486895/mda-mmwfyjruzeuwe38n.mp4'
-				}, {
-					name: '长津湖战役，志愿军九兵团的伤亡巨大，这个视频一起来看看吧',
-					url: 'https://vd2.bdstatic.com/mda-nhshuxuai9m276n4/sc/cae_h264/1661604142056760592/mda-nhshuxuai9m276n4.mp4'
 				}]
 				for (let i in this.list) {
 					const duration = await this.getDuring(i, this.list[i].url)
@@ -52,9 +49,9 @@
 				var audioElement = new Audio(url)
 				return new Promise((resolve, reject) => {
 					audioElement.addEventListener("loadedmetadata", function() {
-						setTimeout(()=>{
+						setTimeout(() => {
 							resolve(parseInt(document.getElementById('video' + i).duration))
-						},1000)
+						}, 1000)
 					})
 				})
 			},
