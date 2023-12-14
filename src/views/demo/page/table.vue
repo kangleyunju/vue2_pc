@@ -16,18 +16,45 @@
 				<el-table-column prop="total2" label="不含税总价(元)" min-width="150"></el-table-column>
 			</el-table-column>
 		</el-table>
+		<supplierOffer :dataMsg="dataMsg" @update="update" />
 	</div>
 </template>
 <script>
+	import supplierOffer from "./supplierOffer"
 	export default {
 		data() {
 			return {
 				tableData: [],
 				columnNumber: 12,
-				loading: false
+				loading: false,
+				dataMsg: [{
+					sourcingDetailQuotationListVOList: [{
+						brand: '品牌',
+						excludingTaxPrice: '不含税单价',
+						includingTaxPrice: '含税单价',
+						taxRate: '税率',
+						otherExpenses: '其他费用',
+						areaName: '所属区域',
+						file: '',
+						notes: 'notes'
+					}],
+					detailName: '名称',
+					detailSpecs: '规格',
+					unit: '单位',
+					number: '需求数量',
+					brand: '品牌',
+					notes: '备注',
+					id: 48
+				}]
 			}
 		},
+		components: {
+			supplierOffer
+		},
 		methods: {
+			update(e) {
+				this.dataMsg = e
+			},
 			getList() {
 				this.loading = true
 				//模拟请求接口
