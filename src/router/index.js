@@ -110,6 +110,20 @@ const routes = [{
 		meta: {
 			title: '图表'
 		}
+	}, {
+		path: 'diqiu',
+		name: 'echartsDiqiu',
+		component: () => import('@/views/echarts/page/diqiu.vue'),
+		meta: {
+			title: '地球'
+		}
+	}, {
+		path: 'gdp',
+		name: 'echartsGdp',
+		component: () => import('@/views/echarts/page/gdp.vue'),
+		meta: {
+			title: 'GDP'
+		}
 	}]
 }, {
 	path: "/tool",
@@ -279,7 +293,7 @@ const routes = [{
 }]
 const router = new VueRouter({
 	mode: 'hash',
-	base: process.env.BASE_URL,
+	base: '/vue2_pc/',
 	scrollBehavior: () => ({
 		y: 0
 	}),

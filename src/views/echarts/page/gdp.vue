@@ -8,20 +8,13 @@
 	</div>
 </template>
 <script>
-	import { ganran } from '../utils/ganran.js'
-	import { shipin } from '../utils/shipin.js'
-	import { yingye } from '../utils/yingye.js'
-	import { fensi } from '../utils/fensi.js'
-	import { duihua } from '../utils/duihua.js'
+	import 'echarts-gl';
+	import { gdp } from '../utils/gdp'
 	export default {
 		data() {
 			return {
 				options: [
-					duihua,
-					ganran,
-					shipin,
-					yingye,
-					fensi
+					gdp
 				],
 				isDark: false,
 				timer: null

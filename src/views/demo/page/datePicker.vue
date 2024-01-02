@@ -9,7 +9,7 @@
 	</div>
 </template>
 <script>
-	import { duihua } from '@/views/echarts/page/duihua'
+	import { duihua } from '@/views/echarts/utils/duihua'
 	export default {
 		data() {
 			return {

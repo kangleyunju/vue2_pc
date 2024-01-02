@@ -11,23 +11,23 @@
 	</div>
 </template>
 <script>
-	import superGif from "@/views/tool/js/libgif.js"
+	import superGif from "@/views/tool/utils/libgif.js"
 	export default {
 		components: {},
 		data() {
 			return {
 				isPlay: true,
-				gif:null,
-				imgUrl:require('@/assets/tool/eat.gif')
+				gif: null,
+				imgUrl: require('@/assets/tool/eat.gif')
 			}
 		},
 		methods: {
 			togglePlay() {
-				if(this.isPlay){
-					this.isPlay=false
+				if (this.isPlay) {
+					this.isPlay = false
 					this.gif.pause()
-				}else{
-					this.isPlay=true
+				} else {
+					this.isPlay = true
 					this.gif.play()
 				}
 			},
@@ -46,14 +46,14 @@
 <style lang="scss">
 	.gifContainer {
 		text-align: center;
-		h1{
+		h1 {
 			line-height: 100px;
 		}
-		img{
+		img {
 			height: 300px;
 			width: 300px;
 		}
-		.controllBox{
+		.controllBox {
 			padding: 20px 0;
 		}
 	}
